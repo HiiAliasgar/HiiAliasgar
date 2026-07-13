@@ -5,9 +5,6 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/HiiAliasgar">
-    <img src="https://komarev.com/ghpvc/?username=HiiAliasgar&style=for-the-badge&color=blue" alt="Profile views" />
-  </a>
   <img src="https://img.shields.io/badge/🎓-CS_Undergrad-0ea5e9?style=for-the-badge" alt="Status" />
   <img src="https://img.shields.io/badge/📍-Navi_Mumbai-ef4444?style=for-the-badge" alt="Location" />
 </p>
@@ -153,13 +150,19 @@ I care about writing projects that are **easy to run**, **easy to test**, and **
 ## 📊 GitHub Analytics
 
 <p align="center">
-  <img height="180" src="https://github-readme-stats.vercel.app/api?username=HiiAliasgar&show_icons=true&theme=radical&hide_border=true&count_private=true" alt="GitHub Stats" />
+  <a href="https://github.com/anuraghazra/github-readme-stats">
+    <img height="170" src="https://github-readme-stats.vercel.app/api?username=HiiAliasgar&show_icons=true&theme=tokyonight&hide_border=true&count_private=true&include_all_commits=true" alt="GitHub Stats" />
+  </a>
   &nbsp;&nbsp;
-  <img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=HiiAliasgar&layout=compact&theme=radical&hide_border=true" alt="Top Languages" />
+  <a href="https://github.com/anuraghazra/github-readme-stats">
+    <img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=HiiAliasgar&layout=compact&theme=tokyonight&hide_border=true&langs_count=8" alt="Top Languages" />
+  </a>
 </p>
 
 <p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=HiiAliasgar&theme=radical&hide_border=true" alt="GitHub Streak" />
+  <a href="https://github.com/DenverCoder1/github-readme-streak-stats">
+    <img src="https://streak-stats.demolab.com?user=HiiAliasgar&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
+  </a>
 </p>
 
 ---
