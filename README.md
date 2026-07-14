@@ -1,6 +1,10 @@
 <h1 align="center">Hey there, I'm Aliasgar Lohawala 👋</h1>
 
 <p align="center">
+  <img src="https://komarev.com/ghpvc/?username=HiiAliasgar&color=0ea5e9&style=for-the-badge&label=PROFILE+VIEWS" alt="Profile Views" />
+</p>
+
+<p align="center">
   <em>Building AI-powered applications that solve real problems</em>
 </p>
 
@@ -33,6 +37,25 @@ I'm a motivated Computer Science undergrad passionate about **AI**, **automation
 - 🧠 **AI Agents** - Multi-agent systems using LangChain
 
 I care about writing projects that are **easy to run**, **easy to test**, and **clear enough** for other developers to understand.
+
+---
+
+## 🌱 Currently Learning
+
+- Advanced RAG patterns & Vector DB optimization
+- LLM deployment & fine-tuning techniques
+- Production-grade AI application architecture
+- CI/CD pipelines & cloud deployment
+
+---
+
+## 💬 Ask Me About
+
+- Python automation & scripting
+- Building AI-powered applications
+- FastAPI & Django backend development
+- LangChain & OpenAI integration
+- Streamlit for rapid prototyping
 
 ---
 
@@ -94,8 +117,7 @@ I care about writing projects that are **easy to run**, **easy to test**, and **
       <p>Document Q&A system with FastAPI + Streamlit. Upload PDFs, create vector index, ask questions with source-aware answers.</p>
       <p><b>Tech:</b> FastAPI, LangChain, ChromaDB, OpenAI, Docker</p>
       <p>
-        <a href="https://github.com/HiiAliasgar/Rag_Application">📦 Repository</a> • 
-        <a href="#">🚀 Live Demo</a>
+        <a href="https://github.com/HiiAliasgar/Rag_Application">📦 Repository</a>
       </p>
     </td>
     <td width="50%" valign="top">
@@ -147,12 +169,7 @@ I care about writing projects that are **easy to run**, **easy to test**, and **
 
 ---
 
-## 📊 GitHub Analytics
-
-<p align="center">
-  <img width="48%" src="https://github-readme-stats.vercel.app/api?username=HiiAliasgar&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" alt="GitHub Stats" />
-  <img width="48%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=HiiAliasgar&layout=compact&theme=tokyonight&hide_border=true&langs_count=8" alt="Top Languages" />
-</p>
+## 📊 GitHub Streak
 
 <p align="center">
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=HiiAliasgar&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
