@@ -17,7 +17,7 @@
   <a href="https://linkedin.com/in/aliasgar-lohawala" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
   </a>
-  <a href="https://hiialiasgar.github.io" target="_blank">
+  <a href="https://hiialiasgar.github.io/HiiAliasgar/" target="_blank">
     <img src="https://img.shields.io/badge/Portfolio-2563eb?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio" />
   </a>
   <a href="https://github.com/HiiAliasgar?tab=repositories" target="_blank">
