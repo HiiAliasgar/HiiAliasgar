@@ -1,11 +1,11 @@
-<h1 align="center">Hey there, I'm Aliasgar Lohawala 👋</h1>
+<h1 align="center">Hey there, I'm Aliasgar 👋</h1>
 
 <p align="center">
   <img src="https://komarev.com/ghpvc/?username=HiiAliasgar&color=0ea5e9&style=for-the-badge&label=PROFILE+VIEWS" alt="Profile Views" />
 </p>
 
 <p align="center">
-  <em>Building AI-powered applications that solve real problems</em>
+  <em>AI developer and software engineer building intelligent applications</em>
 </p>
 
 <p align="center">
@@ -16,6 +16,9 @@
 <p align="center">
   <a href="https://linkedin.com/in/aliasgar-lohawala" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+  </a>
+  <a href="https://hiialiasgar.github.io" target="_blank">
+    <img src="https://img.shields.io/badge/Portfolio-2563eb?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio" />
   </a>
   <a href="https://github.com/HiiAliasgar?tab=repositories" target="_blank">
     <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
