@@ -1,10 +1,6 @@
 <h1 align="center">Hey there, I'm Aliasgar 👋</h1>
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=HiiAliasgar&color=0ea5e9&style=for-the-badge&label=PROFILE+VIEWS" alt="Profile Views" />
-</p>
-
-<p align="center">
   <em>AI developer and software engineer building intelligent applications</em>
 </p>
 
