@@ -13,6 +13,7 @@
       --muted: #6b7280;
       --accent: #2563eb;
       --accent-light: #dbeafe;
+      --emerald: #059669;
       --line: #e5e7eb;
       --paper: #ffffff;
     }
@@ -26,6 +27,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* Page Controls */
     .page-controls {
       position: fixed;
       bottom: 32px;
@@ -66,107 +68,174 @@
       color: var(--accent);
     }
 
+    /* Resume Container */
     .resume {
-      width: 800px;
+      width: 860px;
       max-width: 100%;
       margin: 40px auto;
       background: var(--paper);
-      padding: 56px 64px;
       box-shadow: 0 1px 3px rgba(0,0,0,.08);
     }
 
+    /* Header */
     .resume-header {
+      background: var(--ink);
+      color: white;
+      padding: 48px 56px;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      padding-bottom: 24px;
-      border-bottom: 2px solid var(--ink);
-      margin-bottom: 32px;
     }
 
     .resume-header h1 {
-      font-size: 32px;
+      font-size: 36px;
       font-weight: 800;
       letter-spacing: -1.5px;
       line-height: 1.1;
+      color: white;
     }
 
     .resume-header h1 span {
-      color: var(--accent);
+      color: #60a5fa;
     }
 
     .resume-header .subtitle {
       font: 13px 'DM Mono', monospace;
-      color: var(--muted);
-      letter-spacing: 1px;
-      margin-top: 6px;
+      color: #9ca3af;
+      letter-spacing: 1.5px;
+      margin-top: 8px;
+      text-transform: uppercase;
     }
 
-    .contact-info {
+    .header-contact {
       text-align: right;
       font-size: 12px;
-      color: var(--muted);
-      line-height: 1.9;
+      color: #d1d5db;
+      line-height: 2;
     }
 
-    .contact-info a {
-      color: var(--accent);
+    .header-contact a {
+      color: #60a5fa;
       text-decoration: none;
+      transition: color .2s;
+    }
+
+    .header-contact a:hover {
+      color: #93c5fd;
+    }
+
+    /* Body Layout */
+    .resume-body {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+    }
+
+    .resume-main {
+      padding: 40px 48px 40px 56px;
+      border-right: 1px solid var(--line);
+    }
+
+    .resume-aside {
+      padding: 40px 36px;
+    }
+
+    /* Section Titles */
+    .section-title {
+      font: 10px 'DM Mono', monospace;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--ink);
+      font-weight: 500;
     }
 
     .section {
+      margin-bottom: 32px;
+    }
+
+    .section:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Profile */
+    .profile-text {
+      font-size: 13px;
+      line-height: 1.8;
+      color: #4b5563;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 22px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: var(--line);
+    }
+
+    .timeline-entry {
+      position: relative;
       margin-bottom: 28px;
     }
 
-    .section-title {
-      font: 11px 'DM Mono', monospace;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .entry {
-      margin-bottom: 20px;
-    }
-
-    .entry:last-child {
+    .timeline-entry:last-child {
       margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -22px;
+      top: 6px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
     }
 
     .entry-header {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
+      gap: 12px;
     }
 
     .entry-header h3 {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
       letter-spacing: -.3px;
     }
 
     .entry-date {
-      font: 11px 'DM Mono', monospace;
+      font: 10px 'DM Mono', monospace;
       color: var(--muted);
       white-space: nowrap;
+      background: var(--accent-light);
+      padding: 3px 8px;
+      border-radius: 2px;
     }
 
     .entry-sub {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--accent);
       font-weight: 600;
-      margin: 3px 0 8px;
+      margin: 4px 0 10px;
     }
 
     .entry ul {
       margin: 0;
-      padding-left: 18px;
-      font-size: 13px;
+      padding-left: 16px;
+      font-size: 12px;
       line-height: 1.75;
-      color: #374151;
+      color: #4b5563;
     }
 
     .entry ul li {
@@ -177,66 +246,151 @@
       color: var(--accent);
     }
 
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px 32px;
+    /* Tech Tags */
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 10px;
     }
 
-    .skill-group label {
-      display: block;
+    .tech-tags span {
       font: 9px 'DM Mono', monospace;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
+      padding: 3px 8px;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 2px;
+      letter-spacing: .5px;
+    }
+
+    /* Skill Bars */
+    .skill-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .skill-bar-item {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .skill-bar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .skill-bar-header span:first-child {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: -.2px;
+    }
+
+    .skill-pct {
+      font: 10px 'DM Mono', monospace;
       color: var(--muted);
-      margin-bottom: 8px;
     }
 
-    .skill-group p {
-      font-size: 13px;
-      line-height: 1.6;
-      color: #374151;
+    .skill-bar-track {
+      width: 100%;
+      height: 5px;
+      background: var(--line);
+      border-radius: 3px;
+      overflow: hidden;
     }
 
-    .summary {
-      font-size: 14px;
-      line-height: 1.75;
-      color: #374151;
-      margin-bottom: 4px;
+    .skill-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), #60a5fa);
+      border-radius: 3px;
     }
 
+    /* Aside Tags */
+    .aside-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .aside-tags span {
+      font-size: 11px;
+      padding: 5px 10px;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      border-radius: 2px;
+      font-weight: 500;
+      transition: all .2s;
+    }
+
+    .aside-tags span:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-light);
+    }
+
+    /* Certifications */
+    .cert-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 12px;
+      color: #4b5563;
+    }
+
+    .cert-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .cert-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 50%;
+      display: grid;
+      place-items:center;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    /* Print Styles */
     @media print {
       body { background: white; }
       .page-controls { display: none !important; }
       .resume {
         margin: 0;
-        padding: 40px 48px;
         box-shadow: none;
         width: 100%;
         max-width: none;
       }
+      .resume-header { padding: 36px 48px; }
+      .resume-main { padding: 32px 36px 32px 48px; }
+      .resume-aside { padding: 32px 36px; }
+      .aside-tags span:hover { border-color: var(--line); color: var(--ink); background: transparent; }
     }
 
-    @media (max-width: 860px) {
-      .resume {
-        margin: 0;
-        padding: 32px 24px;
-        border-radius: 0;
-      }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .resume { margin: 0; border-radius: 0; }
       .resume-header {
         flex-direction: column;
-        gap: 16px;
+        gap: 20px;
+        padding: 32px 24px;
       }
-      .contact-info {
-        text-align: left;
+      .header-contact { text-align: left; }
+      .resume-body { grid-template-columns: 1fr; }
+      .resume-main {
+        padding: 32px 24px;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
       }
-      .skills-grid {
-        grid-template-columns: 1fr;
-      }
-      .page-controls {
-        bottom: 16px;
-        right: 16px;
-      }
+      .resume-aside { padding: 32px 24px; }
+      .entry-header { flex-direction: column; gap: 4px; }
+      .entry-date { white-space: normal; width: fit-content; }
+      .page-controls { bottom: 16px; right: 16px; }
     }
   </style>
 </head>
@@ -252,7 +406,7 @@
         <h1>Aliasgar <span>Lohawala</span></h1>
         <p class="subtitle">AI &amp; Software Developer</p>
       </div>
-      <div class="contact-info">
+      <div class="header-contact">
         Navi Mumbai, India<br />
         <a href="mailto:aliasgarlohawal52@gmail.com">aliasgarlohawal52@gmail.com</a><br />
         <a href="https://linkedin.com/in/aliasgar-lohawala" target="_blank">linkedin.com/in/aliasgar-lohawala</a><br />
@@ -260,82 +414,122 @@
       </div>
     </div>
 
-    <div class="section">
-      <p class="section-title">Profile</p>
-      <p class="summary">AI developer and software engineer with a focus on building practical, well-crafted applications using Python, modern web frameworks, and large language model tools. Experienced in designing end-to-end AI systems including RAG pipelines, conversational agents, and computer vision applications.</p>
-    </div>
+    <div class="resume-body">
+      <div class="resume-main">
+        <div class="section">
+          <p class="section-title">Profile</p>
+          <p class="profile-text">AI developer and software engineer with a focus on building practical, well-crafted applications using Python, modern web frameworks, and large language model tools. Experienced in designing end-to-end AI systems including RAG pipelines, conversational agents, and computer vision applications.</p>
+        </div>
 
-    <div class="section">
-      <p class="section-title">Experience</p>
-      <div class="entry">
-        <div class="entry-header">
-          <h3>AI &amp; Software Developer</h3>
-          <span class="entry-date">2024 — Present</span>
+        <div class="section">
+          <p class="section-title">Experience</p>
+          <div class="timeline">
+            <div class="timeline-entry">
+              <div class="timeline-dot"></div>
+              <div class="entry-header">
+                <h3>AI &amp; Software Developer</h3>
+                <span class="entry-date">2024 — Present</span>
+              </div>
+              <p class="entry-sub">Independent / Freelance</p>
+              <ul>
+                <li>Designed and deployed end-to-end AI applications including RAG systems, conversational agents, and image classification engines.</li>
+                <li>Built production-grade backends with FastAPI and Django, integrated LLM pipelines using LangChain and OpenAI.</li>
+                <li>Developed Streamlit dashboards for real-time data interaction and AI-powered analysis tools.</li>
+              </ul>
+              <div class="tech-tags">
+                <span>Python</span><span>FastAPI</span><span>LangChain</span><span>OpenAI</span><span>Streamlit</span>
+              </div>
+            </div>
+            <div class="timeline-entry">
+              <div class="timeline-dot"></div>
+              <div class="entry-header">
+                <h3>Software Engineering Projects</h3>
+                <span class="entry-date">2023 — 2024</span>
+              </div>
+              <p class="entry-sub">Academic &amp; Personal</p>
+              <ul>
+                <li>Built a multi-agent Smart Study Assistant with personalized learning plans and progress tracking.</li>
+                <li>Developed a weather forecasting application using Django and JavaScript with responsive UI.</li>
+                <li>Created an AI Resume Critiquer providing structured feedback using GPT-4o and PDF parsing.</li>
+              </ul>
+              <div class="tech-tags">
+                <span>Django</span><span>TensorFlow</span><span>JavaScript</span><span>GPT-4o</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <p class="entry-sub">Independent / Freelance</p>
-        <ul>
-          <li>Designed and deployed end-to-end AI applications including RAG systems, conversational agents, and image classification engines.</li>
-          <li>Built production-grade backends with FastAPI and Django, integrated LLM pipelines using LangChain and OpenAI.</li>
-          <li>Developed Streamlit dashboards for real-time data interaction and AI-powered analysis tools.</li>
-        </ul>
-      </div>
-      <div class="entry">
-        <div class="entry-header">
-          <h3>Software Engineering Projects</h3>
-          <span class="entry-date">2023 — 2024</span>
-        </div>
-        <p class="entry-sub">Academic &amp; Personal</p>
-        <ul>
-          <li>Built a multi-agent Smart Study Assistant with personalized learning plans and progress tracking.</li>
-          <li>Developed a weather forecasting application using Django and JavaScript with responsive UI.</li>
-          <li>Created an AI Resume Critiquer providing structured feedback using GPT-4o and PDF parsing.</li>
-        </ul>
-      </div>
-    </div>
 
-    <div class="section">
-      <p class="section-title">Education</p>
-      <div class="entry">
-        <div class="entry-header">
-          <h3>Bachelor's Degree — Computer Science / Engineering</h3>
-          <span class="entry-date">2021 — 2025</span>
-        </div>
-        <ul>
-          <li>Focus on software engineering, data structures, and artificial intelligence.</li>
-          <li>Relevant coursework: Machine Learning, Data Science, Web Development, Database Systems.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="section">
-      <p class="section-title">Technical Skills</p>
-      <div class="skills-grid">
-        <div class="skill-group">
-          <label>Languages</label>
-          <p>Python, JavaScript, SQL, HTML/CSS</p>
-        </div>
-        <div class="skill-group">
-          <label>Frameworks &amp; Libraries</label>
-          <p>FastAPI, Django, Streamlit, LangChain, TensorFlow</p>
-        </div>
-        <div class="skill-group">
-          <label>AI &amp; Machine Learning</label>
-          <p>OpenAI API, Groq, RAG Pipelines, NLP, Computer Vision</p>
-        </div>
-        <div class="skill-group">
-          <label>Tools &amp; Platforms</label>
-          <p>Git, GitHub, ChromaDB, OpenCV, Streamlit Cloud</p>
+        <div class="section">
+          <p class="section-title">Education</p>
+          <div class="timeline">
+            <div class="timeline-entry">
+              <div class="timeline-dot"></div>
+              <div class="entry-header">
+                <h3>Bachelor's Degree — Computer Science / Engineering</h3>
+                <span class="entry-date">2021 — 2025</span>
+              </div>
+              <ul>
+                <li>Focus on software engineering, data structures, and artificial intelligence.</li>
+                <li>Relevant coursework: Machine Learning, Data Science, Web Development, Database Systems.</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="section">
-      <p class="section-title">Certifications</p>
-      <div class="entry">
-        <ul>
-          <li>AI &amp; Machine Learning — Online Platforms</li>
-          <li>Python Development — Online Platforms</li>
-        </ul>
+      <div class="resume-aside">
+        <div class="section">
+          <p class="section-title">Technical Skills</p>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-header"><span>Python</span><span class="skill-pct">95%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" style="width:95%"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header"><span>FastAPI / Django</span><span class="skill-pct">88%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" style="width:88%"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header"><span>LangChain / LLMs</span><span class="skill-pct">90%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header"><span>Streamlit</span><span class="skill-pct">85%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header"><span>TensorFlow / CV</span><span class="skill-pct">78%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" style="width:78%"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header"><span>JavaScript / CSS</span><span class="skill-pct">80%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header"><span>SQL / Databases</span><span class="skill-pct">82%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" style="width:82%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <p class="section-title">Tools &amp; Platforms</p>
+          <div class="aside-tags">
+            <span>Git</span><span>GitHub</span><span>ChromaDB</span><span>OpenCV</span><span>OpenAI API</span><span>Groq</span><span>NLP</span><span>RAG</span><span>REST APIs</span><span>Streamlit Cloud</span>
+          </div>
+        </div>
+
+        <div class="section">
+          <p class="section-title">Certifications</p>
+          <div class="cert-item">
+            <div class="cert-icon">◆</div>
+            <div><b style="font-size:12px">AI &amp; Machine Learning</b><br /><small style="color:var(--muted);font-size:11px">Online Platforms</small></div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-icon">◆</div>
+            <div><b style="font-size:12px">Python Development</b><br /><small style="color:var(--muted);font-size:11px">Online Platforms</small></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
