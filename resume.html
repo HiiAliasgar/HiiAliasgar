@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aliasgar Lohawala — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #111827;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --accent-light: #dbeafe;
+      --line: #e5e7eb;
+      --paper: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f3f4f6;
+      color: var(--ink);
+      font-family: 'Manrope', Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page-controls {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 100;
+      display: flex;
+      gap: 10px;
+    }
+
+    .page-controls button {
+      padding: 12px 24px;
+      font: 12px 'DM Mono', monospace;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .btn-print {
+      background: var(--ink);
+      color: white;
+    }
+
+    .btn-print:hover {
+      background: var(--accent);
+    }
+
+    .btn-back {
+      background: white;
+      color: var(--ink);
+      border: 1px solid var(--line) !important;
+    }
+
+    .btn-back:hover {
+      border-color: var(--accent) !important;
+      color: var(--accent);
+    }
+
+    .resume {
+      width: 800px;
+      max-width: 100%;
+      margin: 40px auto;
+      background: var(--paper);
+      padding: 56px 64px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.08);
+    }
+
+    .resume-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 24px;
+      border-bottom: 2px solid var(--ink);
+      margin-bottom: 32px;
+    }
+
+    .resume-header h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+    }
+
+    .resume-header h1 span {
+      color: var(--accent);
+    }
+
+    .resume-header .subtitle {
+      font: 13px 'DM Mono', monospace;
+      color: var(--muted);
+      letter-spacing: 1px;
+      margin-top: 6px;
+    }
+
+    .contact-info {
+      text-align: right;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    .contact-info a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .section {
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      font: 11px 'DM Mono', monospace;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .entry {
+      margin-bottom: 20px;
+    }
+
+    .entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .entry-header h3 {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -.3px;
+    }
+
+    .entry-date {
+      font: 11px 'DM Mono', monospace;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .entry-sub {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+      margin: 3px 0 8px;
+    }
+
+    .entry ul {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #374151;
+    }
+
+    .entry ul li {
+      margin-bottom: 3px;
+    }
+
+    .entry ul li::marker {
+      color: var(--accent);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 32px;
+    }
+
+    .skill-group label {
+      display: block;
+      font: 9px 'DM Mono', monospace;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .skill-group p {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #374151;
+    }
+
+    .summary {
+      font-size: 14px;
+      line-height: 1.75;
+      color: #374151;
+      margin-bottom: 4px;
+    }
+
+    @media print {
+      body { background: white; }
+      .page-controls { display: none !important; }
+      .resume {
+        margin: 0;
+        padding: 40px 48px;
+        box-shadow: none;
+        width: 100%;
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .resume {
+        margin: 0;
+        padding: 32px 24px;
+        border-radius: 0;
+      }
+      .resume-header {
+        flex-direction: column;
+        gap: 16px;
+      }
+      .contact-info {
+        text-align: left;
+      }
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      .page-controls {
+        bottom: 16px;
+        right: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-controls">
+    <button class="btn-back" onclick="window.location.href='index.html#resume'">← Back</button>
+    <button class="btn-print" onclick="window.print()">Save as PDF</button>
+  </div>
+
+  <div class="resume">
+    <div class="resume-header">
+      <div>
+        <h1>Aliasgar <span>Lohawala</span></h1>
+        <p class="subtitle">AI &amp; Software Developer</p>
+      </div>
+      <div class="contact-info">
+        Navi Mumbai, India<br />
+        <a href="mailto:aliasgarlohawal52@gmail.com">aliasgarlohawal52@gmail.com</a><br />
+        <a href="https://linkedin.com/in/aliasgar-lohawala" target="_blank">linkedin.com/in/aliasgar-lohawala</a><br />
+        <a href="https://hiialiasgar.github.io/HiiAliasgar/" target="_blank">github.com/HiiAliasgar</a>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-title">Profile</p>
+      <p class="summary">AI developer and software engineer with a focus on building practical, well-crafted applications using Python, modern web frameworks, and large language model tools. Experienced in designing end-to-end AI systems including RAG pipelines, conversational agents, and computer vision applications.</p>
+    </div>
+
+    <div class="section">
+      <p class="section-title">Experience</p>
+      <div class="entry">
+        <div class="entry-header">
+          <h3>AI &amp; Software Developer</h3>
+          <span class="entry-date">2024 — Present</span>
+        </div>
+        <p class="entry-sub">Independent / Freelance</p>
+        <ul>
+          <li>Designed and deployed end-to-end AI applications including RAG systems, conversational agents, and image classification engines.</li>
+          <li>Built production-grade backends with FastAPI and Django, integrated LLM pipelines using LangChain and OpenAI.</li>
+          <li>Developed Streamlit dashboards for real-time data interaction and AI-powered analysis tools.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <div class="entry-header">
+          <h3>Software Engineering Projects</h3>
+          <span class="entry-date">2023 — 2024</span>
+        </div>
+        <p class="entry-sub">Academic &amp; Personal</p>
+        <ul>
+          <li>Built a multi-agent Smart Study Assistant with personalized learning plans and progress tracking.</li>
+          <li>Developed a weather forecasting application using Django and JavaScript with responsive UI.</li>
+          <li>Created an AI Resume Critiquer providing structured feedback using GPT-4o and PDF parsing.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-title">Education</p>
+      <div class="entry">
+        <div class="entry-header">
+          <h3>Bachelor's Degree — Computer Science / Engineering</h3>
+          <span class="entry-date">2021 — 2025</span>
+        </div>
+        <ul>
+          <li>Focus on software engineering, data structures, and artificial intelligence.</li>
+          <li>Relevant coursework: Machine Learning, Data Science, Web Development, Database Systems.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-title">Technical Skills</p>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <label>Languages</label>
+          <p>Python, JavaScript, SQL, HTML/CSS</p>
+        </div>
+        <div class="skill-group">
+          <label>Frameworks &amp; Libraries</label>
+          <p>FastAPI, Django, Streamlit, LangChain, TensorFlow</p>
+        </div>
+        <div class="skill-group">
+          <label>AI &amp; Machine Learning</label>
+          <p>OpenAI API, Groq, RAG Pipelines, NLP, Computer Vision</p>
+        </div>
+        <div class="skill-group">
+          <label>Tools &amp; Platforms</label>
+          <p>Git, GitHub, ChromaDB, OpenCV, Streamlit Cloud</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-title">Certifications</p>
+      <div class="entry">
+        <ul>
+          <li>AI &amp; Machine Learning — Online Platforms</li>
+          <li>Python Development — Online Platforms</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
