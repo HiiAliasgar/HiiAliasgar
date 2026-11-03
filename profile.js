@@ -52,13 +52,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const next = document.createElement("button");
     next.type = "button"; next.setAttribute("aria-label","Next projects"); next.textContent = "→";
     const cards = [...track.querySelectorAll(".project-card")];
+    const cardStep = () => (cards[0]?.getBoundingClientRect().width || 300) + 16;
     const updateCounter = () => {
-      const first = Math.min(cards.length, Math.round(track.scrollLeft / Math.max(1, cards[0]?.getBoundingClientRect().width + 18 || 1)) + 1);
+      const first = Math.min(cards.length, Math.max(1, Math.round(track.scrollLeft / Math.max(1,cardStep())) + 1));
       counter.textContent = String(first).padStart(2,"0") + " / " + String(cards.length).padStart(2,"0");
+      previous.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
     };
-    previous.addEventListener("click", () => track.scrollBy({left:-track.clientWidth * .8,behavior:"smooth"}));
-    next.addEventListener("click", () => track.scrollBy({left:track.clientWidth * .8,behavior:"smooth"}));
+    previous.addEventListener("click", () => track.scrollBy({left:-cardStep(),behavior:"smooth"}));
+    next.addEventListener("click", () => track.scrollBy({left:cardStep(),behavior:"smooth"}));
     track.addEventListener("scroll", updateCounter, {passive:true});
+    window.addEventListener("resize", updateCounter);
     controls.append(previous,counter,next);
     footer.append(controls);
     updateCounter();
