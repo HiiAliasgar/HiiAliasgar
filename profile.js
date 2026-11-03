@@ -16,6 +16,21 @@ document.addEventListener("DOMContentLoaded", () => {
     "smart-study-assistant",
     "support-ticketing-crm"
   ];
+  const displayNames = {
+    "Accident-Guard": "AccidentGuard",
+    "aliasgar-ai": "Aliasgar AI",
+    "Rag_Application": "RAG Application",
+    "weatherProject": "Weather Forecast App",
+    "Moive-Recommender-System": "Movie Recommender System",
+    "AI-Image-Classifier-": "AI Image Classifier"
+  };
+  const curatedDescriptions = {
+    "Accident-Guard": "Experimental Android prototype exploring smartphone motion-sensor impact detection. Not a certified safety system.",
+    "aliasgar-ai": "Personal AI agent with Gemini/OpenAI-compatible tool calling, FastAPI and approval-gated GitHub workflows.",
+    "Rag_Application": "Document question-answering prototype using retrieval-augmented generation.",
+    "smart-study-assistant": "AI-assisted study and learning-support project.",
+    "support-ticketing-crm": "Support-ticketing and CRM application."
+  };
 
   function setStatus(message) {
     if (status) status.textContent = message;
@@ -73,9 +88,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const details = document.createElement("div");
     const title = document.createElement("h3");
-    title.textContent = (repo.name || "Untitled repository").replace(/[-_]/g, " ");
+    title.textContent = displayNames[repo.name] || (repo.name || "Untitled repository").replace(/[-_]/g, " ");
     const description = document.createElement("p");
-    description.textContent = repo.description || "Public repository. A project description has not been added yet.";
+    description.textContent = curatedDescriptions[repo.name] || repo.description || "Public repository. A project description has not been added yet.";
     details.append(title, description);
 
     const bottom = document.createElement("div");
