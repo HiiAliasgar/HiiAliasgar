@@ -143,3 +143,22 @@ a,button{cursor:pointer}
  .contact-main{display:flex;flex-direction:column;gap:25px}
  .contact-compose{padding:17px}
 }
+
+
+/* Portfolio content polish: restrained project identity panels and factual credential entry. */
+.github-project-visual{position:relative;display:flex;align-items:stretch;justify-content:stretch;padding:22px;background:#050505}
+.github-project-visual.preview-fallback:after{display:none!important}
+.project-preview-label{width:100%;display:flex;flex-direction:column;justify-content:space-between;gap:14px;padding:15px;border:1px solid #303030;background:linear-gradient(145deg,#111,#050505)}
+.project-preview-label span{font:8px var(--mono);letter-spacing:1.4px;color:#888}
+.project-preview-label strong{font-size:clamp(19px,2vw,27px);font-weight:500;letter-spacing:-1px;color:#f2f2f2}
+.project-preview-label small{font:8px var(--mono);letter-spacing:.7px;color:#aaa}
+.credential-entry{display:grid;grid-template-columns:minmax(170px,.55fr) minmax(0,1.45fr);gap:45px;padding:32px 0;border-top:1px solid #333;border-bottom:1px solid #333}
+.credential-index{font:10px var(--mono);letter-spacing:1px;color:#eee}
+.credential-index span{display:block;margin-top:9px;color:#777;font-size:8px}
+.credential-content{max-width:720px}
+.credential-content h3{font-size:clamp(27px,3.2vw,43px);letter-spacing:-1.8px;margin:0 0 13px}
+.credential-content>p:not(.credential-issuer){max-width:620px;color:#aaa;font-size:12px;line-height:1.9}
+.credential-content .credential-facts{margin:25px 0}
+.credential-link{display:inline-block;margin-top:8px;padding-bottom:7px;border-bottom:1px solid #888;color:#eee;font:9px var(--mono);letter-spacing:.8px}
+.credential-note{max-width:700px;margin-top:22px;color:#777;font-size:10px;line-height:1.8}
+@media(max-width:600px){.credential-entry{grid-template-columns:1fr;gap:24px;padding:24px 0}.github-project-visual{padding:12px}.project-preview-label{padding:12px}}
