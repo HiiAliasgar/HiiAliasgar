@@ -348,7 +348,7 @@ a,button{cursor:pointer}
 .about-portrait-orbit { background: transparent !important; box-shadow: none !important; overflow: hidden !important; isolation: auto !important; }
 .about-portrait-orbit::before, .about-portrait-orbit::after, .about-portrait-halo { display: none !important; content: none !important; }
 .about-portrait-orbit img { display: block; width: 100% !important; height: 100% !important; border: 0 !important; border-radius: 50% !important; box-shadow: none !important; object-fit: cover; object-position: center 35%; }
-.project-grid { cursor: grab; user-select: none; -webkit-user-select: none; touch-action: pan-y; scroll-snap-type: x mandatory; scroll-behavior: smooth; }
+.project-grid { cursor: grab; user-select: none; -webkit-user-select: none; touch-action: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; }
 .project-grid.is-dragging { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
 .project-grid .project-card { scroll-snap-align: start; }
 .project-slider-controls button { min-width: 40px; min-height: 40px; cursor: pointer; touch-action: manipulation; }
