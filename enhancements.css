@@ -962,7 +962,7 @@ a:focus-visible, button:focus-visible {
     overflow-x: auto;
   }
   .hero {
-    width: min(100% - 24px, 1100px);
+    width: min(calc(100% - 24px), 1100px);
     margin-top: 12px;
     padding: 54px 24px 44px;
     border-radius: 16px;
