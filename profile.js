@@ -50,12 +50,12 @@ document.addEventListener("DOMContentLoaded", () => {
           const q = points[j], dx = p.x - q.x, dy = p.y - q.y;
           const distance = Math.hypot(dx, dy);
           if (distance < maxDistance) {
-            ctx.strokeStyle = "rgba(184,255,92," + ((1 - distance / maxDistance) * .22) + ")";
+            ctx.strokeStyle = "rgba(120,169,255," + ((1 - distance / maxDistance) * .22) + ")";
             ctx.lineWidth = .65;
             ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
           }
         }
-        ctx.fillStyle = "rgba(184,255,92,.62)";
+        ctx.fillStyle = "rgba(120,169,255,.62)";
         ctx.beginPath(); ctx.arc(p.x, p.y, 1.1 + Math.sin(frame * .018 + p.phase) * .45, 0, Math.PI * 2); ctx.fill();
       });
       frame++;
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const visual = document.createElement("div");
     visual.className = "system-visual";
     visual.setAttribute("aria-label", "Illustration of connected AI system components");
-    visual.innerHTML = '<svg viewBox="0 0 340 150" role="img" aria-hidden="true"><defs><radialGradient id="coreGlow"><stop stop-color="#b8ff5c" stop-opacity=".4"/><stop offset="1" stop-color="#b8ff5c" stop-opacity="0"/></radialGradient></defs><circle cx="170" cy="75" r="48" fill="url(#coreGlow)"/><g fill="none" stroke="#b8ff5c" stroke-opacity=".34"><path class="pulse-path" d="M38 34L112 75L170 75L229 34L302 48M38 116L112 75L229 116L302 102M38 34L38 116M302 48L302 102"/><circle cx="170" cy="75" r="27"/><circle cx="170" cy="75" r="43" stroke-opacity=".14"/></g><g fill="#b8ff5c"><circle class="node-pulse" cx="38" cy="34" r="4"/><circle cx="38" cy="116" r="4"/><circle class="node-pulse" cx="302" cy="48" r="4"/><circle cx="302" cy="102" r="4"/><circle cx="112" cy="75" r="4"/><circle cx="229" cy="34" r="4"/><circle cx="229" cy="116" r="4"/><circle cx="170" cy="75" r="7"/></g><g fill="#c8d8ca" font-family="monospace" font-size="8"><text x="17" y="23">INPUT</text><text x="145" y="117">MODEL</text><text x="269" y="27">OUTPUT</text></g></svg>';
+    visual.innerHTML = '<svg viewBox="0 0 340 150" role="img" aria-hidden="true"><defs><radialGradient id="coreGlow"><stop stop-color="#78a9ff" stop-opacity=".4"/><stop offset="1" stop-color="#78a9ff" stop-opacity="0"/></radialGradient></defs><circle cx="170" cy="75" r="48" fill="url(#coreGlow)"/><g fill="none" stroke="#78a9ff" stroke-opacity=".34"><path class="pulse-path" d="M38 34L112 75L170 75L229 34L302 48M38 116L112 75L229 116L302 102M38 34L38 116M302 48L302 102"/><circle cx="170" cy="75" r="27"/><circle cx="170" cy="75" r="43" stroke-opacity=".14"/></g><g fill="#78a9ff"><circle class="node-pulse" cx="38" cy="34" r="4"/><circle cx="38" cy="116" r="4"/><circle class="node-pulse" cx="302" cy="48" r="4"/><circle cx="302" cy="102" r="4"/><circle cx="112" cy="75" r="4"/><circle cx="229" cy="34" r="4"/><circle cx="229" cy="116" r="4"/><circle cx="170" cy="75" r="7"/></g><g fill="#c8d7eb" font-family="monospace" font-size="8"><text x="17" y="23">INPUT</text><text x="145" y="117">MODEL</text><text x="269" y="27">OUTPUT</text></g></svg>';
     const readout = document.createElement("div");
     readout.className = "system-readout";
     readout.innerHTML = '<div><small>ARCHITECTURE</small><b>DATA → MODEL → API</b></div><div><small>APPROACH</small><b>BUILD / EVALUATE</b></div>';
@@ -144,17 +144,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const featuredOrder = ["Accident-Guard", "weatherProject", "aliasgar-ai"];
   const projectDetails = {
     "Accident-Guard": {
-      title: "AccidentGuard", label: "FLAGSHIP PROJECT",
+      title: "AccidentGuard", label: "MOBILE SYSTEMS / EXPERIMENTAL", stack: ["React", "TypeScript", "Capacitor", "Android", "Motion Sensors"],
       description: "An experimental Android application exploring smartphone motion-sensor signals, crash-candidate detection, location display and alert workflows. Built across React, TypeScript, Capacitor and Android. Not a certified safety system.",
       focus: "Mobile · Sensors · Applied ML", monogram: "AG"
     },
     "weatherProject": {
-      title: "Weather Forecast", label: "FULL-STACK WEB APPLICATION",
+      title: "Weather Forecast", label: "FULL-STACK APPLICATION", stack: ["Python", "Django", "REST", "Weather API", "Data Visualization"],
       description: "A Django-based weather application with city search, current-condition presentation and weather-data visualizations. Demonstrates server-side web development and data presentation.",
       focus: "Python · Django · Data Visualization", monogram: "WX"
     },
     "aliasgar-ai": {
-      title: "Aliasgar AI", label: "AI ENGINEERING",
+      title: "Aliasgar AI", label: "LLM SYSTEMS / DEVELOPER TOOLS", stack: ["Python", "FastAPI", "LLM Tool Calling", "GitHub API", "Approvals"],
       description: "A personal engineering agent with FastAPI, LLM tool calling, GitHub read tools and approval-gated repository changes.",
       focus: "LLM tools · FastAPI · GitHub API", monogram: "AI"
     }
@@ -174,7 +174,14 @@ document.addEventListener("DOMContentLoaded", () => {
     return link;
   }
   function createProjectCard(repo) {
-    const detail = projectDetails[repo.name];
+    const detail = projectDetails[repo.name] || {
+      title: repo.name.replace(/[-_]/g, " "),
+      label: "GITHUB PROJECT",
+      description: repo.description || "A public software project by Aliasgar Lohawala. Open the repository to review its implementation, documentation and current status.",
+      focus: [repo.language, ...(repo.topics || []).slice(0, 2)].filter(Boolean).join(" · ") || "Software development",
+      monogram: repo.name.split(/[-_\s]+/).map(part => part[0]).join("").slice(0, 2).toUpperCase() || "GH",
+      stack: [...new Set([repo.language, ...(repo.topics || []).slice(0, 4)].filter(Boolean))]
+    };
     const card = document.createElement("article");
     card.className = "project" + (repo.name === "Accident-Guard" ? " featured flagship-project" : "");
     const visual = document.createElement("div");
@@ -191,7 +198,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const details = document.createElement("div");
     const title = document.createElement("h3"); title.textContent = detail.title;
     const description = document.createElement("p"); description.textContent = detail.description;
-    details.append(title, description);
+    const tags = document.createElement("div"); tags.className = "project-tags";
+    (detail.stack || []).forEach(label => { const tag = document.createElement("span"); tag.textContent = label; tags.append(tag); });
+    details.append(title, description, tags);
     const bottom = document.createElement("div"); bottom.className = "project-bottom github-project-bottom";
     const meta = document.createElement("span");
     meta.textContent = (repo.language || "Multiple languages") + " · " + Number(repo.stargazers_count || 0) + " stars";
@@ -205,7 +214,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   function renderRepositories(repositories) {
     const byName = new Map(repositories.map(repo => [repo.name, repo]));
-    const selected = featuredOrder.map(name => byName.get(name)).filter(repo => repo && !repo.fork && !repo.archived);
+    const curated = featuredOrder.map(name => byName.get(name)).filter(repo => repo && !repo.fork && !repo.archived);
+    const curatedNames = new Set(curated.map(repo => repo.name));
+    const additional = repositories
+      .filter(repo => !repo.fork && !repo.archived && !curatedNames.has(repo.name))
+      .sort((a, b) => new Date(b.updated_at || 0) - new Date(a.updated_at || 0));
+    const selected = [...curated, ...additional].slice(0, 6);
     grid.replaceChildren();
     if (!selected.length) {
       const empty = document.createElement("p");
@@ -213,7 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
       empty.textContent = "Selected project details are temporarily unavailable. Browse the source repositories on GitHub.";
       grid.append(empty);
     } else selected.forEach(repo => grid.append(createProjectCard(repo)));
-    setStatus("Showing " + selected.length + " selected projects. The full repository list remains on GitHub.");
+    setStatus("Showing " + selected.length + " projects · synced from public GitHub repositories.");
   }
   function readCache() {
     try {
