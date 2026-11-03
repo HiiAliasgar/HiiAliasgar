@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!entry.isIntersecting || entry.intersectionRatio < .5) return;
     active = Number(entry.target.dataset.slide);
     railItems.forEach((item, i) => item.classList.toggle("active", i === active));
-    if (slideNumber) slideNumber.textContent = String(active + 1).padStart(2, "0") + " / 04";
+    if (slideNumber) slideNumber.textContent = String(active + 1).padStart(2, "0") + " / 05";
     slides.forEach(slide => slide.classList.toggle("is-active", slide === entry.target));
   }), {threshold: [.5, .7]});
   slides.forEach(slide => observer.observe(slide));
@@ -27,6 +27,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.key === "ArrowUp" || event.key === "PageUp") { event.preventDefault(); goTo(active - 1); }
     if (event.key === "Home") goTo(0);
     if (event.key === "End") goTo(slides.length - 1);
+  });
+
+
+  const contactForm = document.getElementById("contact-form");
+  contactForm?.addEventListener("submit", event => {
+    event.preventDefault();
+    const message = document.getElementById("contact-message-input")?.value.trim();
+    if (!message) return;
+    const subject = encodeURIComponent("Portfolio enquiry / collaboration");
+    const body = encodeURIComponent(message + "\\n\\n— Sent from Aliasgar Lohawala's portfolio");
+    window.location.href = "mailto:aliasgarlohawal52@gmail.com?subject=" + subject + "&body=" + body;
   });
 
   const track = document.getElementById("github-projects");
