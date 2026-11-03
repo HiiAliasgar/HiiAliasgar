@@ -17,3 +17,69 @@
 @keyframes codeFlicker{0%,92%,100%{opacity:1}94%{opacity:.78}96%{opacity:1}}
 @keyframes particleDrift{0%,100%{transform:translate(0,0);opacity:.55}50%{transform:translate(7px,-13px);opacity:1}}
 @media(prefers-reduced-motion:reduce){.developer-art,.art-glow,.scene-grid,.desk-scene:after,.window-card-a,.window-card-b,.code-float,.art-particle{animation:none!important}}
+
+
+/* Minimal black portfolio pass inspired by the supplied Moncy reference. */
+:root{--bg:#000;--panel:#090909;--panel2:#101010;--line:rgba(255,255,255,.13);--text:#f4f4f4;--muted:#929292;--blue:#d5d5d5;--blue2:#f0f0f0}
+html,body,.slides,.slide{background:#000!important;color:#f4f4f4}
+body{cursor:auto}
+a,button{cursor:pointer}
+.ambient,.slide:before{display:none!important}
+.topbar{background:#000;border-bottom:1px solid #202020;backdrop-filter:none}
+.wordmark span,.eyebrow-line,.hero-copy h1 em,.section-heading h2 em,.contact-main h2 em,.topbar-link span,.primary-button span,.project-link b{color:#fff}
+.status-dot{background:#aaa;box-shadow:none}
+.topbar-center,.topbar-link,.eyebrow,.overline,.hero-tags span,.project-tags span{color:#aaa}
+.topbar-link,.rail-item,.primary-button,.quiet-button,.project-card,.project-link,.contact-links a{border-radius:0}
+.primary-button{background:#f2f2f2;border-color:#f2f2f2;color:#000;box-shadow:none}
+.primary-button:hover{background:#fff;transform:none}
+.hero-copy h1 em,.section-heading h2 em,.contact-main h2 em{font-style:normal;font-family:inherit;font-weight:500}
+.hero-description,.about-side>p,.heading-side p,.project-card>p,.contact-copy{color:#aaa}
+.hero-tags span,.project-tags span{border-color:#282828;background:transparent}
+.desk-scene{background:#080808;border:1px solid #202020;box-shadow:none}
+.scene-grid{opacity:.12}
+.art-glow{display:none}
+.window-card,.code-float{background:#050505;border-color:#333;box-shadow:none;backdrop-filter:none}
+.window-card span,.code-float,.art-caption,.art-label{color:#aaa}
+.about-side{border-color:#292929}
+.side-profile img{border-color:#555}
+.side-facts,.side-facts div,.certificate-info .credential-facts,.credential-facts div{border-color:#292929}
+.side-facts b,.side-profile b{color:#eee}
+.side-social a{border-color:#333;color:#ddd}
+.project-grid{display:flex!important;grid-template-columns:none!important;gap:18px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 2px 18px;overscroll-behavior-x:contain}
+.project-grid::-webkit-scrollbar{display:none}
+.project-card{flex:0 0 min(390px,38vw);scroll-snap-align:start;background:#080808;border:1px solid #262626;padding:12px;box-shadow:none;animation:none!important;transition:border-color .2s}
+.project-card:hover{transform:none;border-color:#777;box-shadow:none}
+.project-visual{height:205px;background:#0b0b0b;border:1px solid #222}
+.github-project-visual{display:block;overflow:hidden;background:#0a0a0a}
+.github-project-visual img{display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:.88}
+.github-project-visual.preview-fallback:after{content:"PROJECT / SOURCE / BUILD";position:absolute;inset:0;display:grid;place-items:center;color:#bbb;font:10px var(--mono);letter-spacing:2px;background:linear-gradient(135deg,#111,#050505)}
+.project-meta{color:#888}
+.project-card h3{color:#f4f4f4;font-size:20px}
+.project-card>p{font-size:11px;min-height:68px}
+.project-link{color:#eee;border-color:#333}
+.projects-footer{align-items:center;color:#888}
+.projects-footer>a{color:#eee}
+.project-slider-controls{display:flex;align-items:center;gap:12px;margin-left:auto}
+.project-slider-controls button{width:36px;height:36px;border:1px solid #444;background:#050505;color:#fff;font-size:18px}
+.project-slider-controls button:hover{background:#fff;color:#000}
+.project-slider-count{min-width:48px;text-align:center;color:#aaa}
+.certificate-preview{background:#090909;border-color:#292929;box-shadow:none}
+.contact-card,.contact-links,.contact-links a{border-color:#292929}
+.contact-links a:hover{background:#101010}
+.email-link,.contact-links b{color:#f4f4f4}
+.contact-footer{color:#777}
+.rail-item.active,.rail-item.active i,.heading-side span,.side-index,.credential-issuer{color:#ddd;background-color:transparent}
+.rail-item.active i{background:#ddd}
+.art-label-bottom,.art-label-top{color:#888}
+.slide-count{color:#888}
+@media(max-width:1250px){.project-card{flex-basis:min(410px,46vw)}}
+@media(max-width:600px){
+  .project-card{flex-basis:86vw}
+  .project-visual{height:190px}
+  .projects-footer{flex-wrap:wrap}
+  .project-slider-controls{margin-left:0}
+  .hero-copy h1 em,.section-heading h2 em,.contact-main h2 em{font-style:normal}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+/* Keep the original engineer artwork, but remove decorative movement and cursor gimmicks. */
+.developer-art,.art-glow,.scene-grid,.desk-scene:after,.window-card-a,.window-card-b,.code-float,.art-particle,.sensor-wave,.weather-bars i,.research-graph path,.terminal-cursor{animation:none!important}
