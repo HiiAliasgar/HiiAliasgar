@@ -7,27 +7,30 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!grid) return;
 
   const username = "HiiAliasgar";
-  const cacheKey = "aliasgar_curated_projects_v2";
+  const cacheKey = "aliasgar_curated_projects_v3";
   const cacheTtlMs = 10 * 60 * 1000;
-  const featuredOrder = ["Accident-Guard", "support-ticketing-crm", "aliasgar-ai"];
+  const featuredOrder = ["Accident-Guard", "weatherProject", "aliasgar-ai"];
   const projectDetails = {
     "Accident-Guard": {
       title: "AccidentGuard",
       label: "FLAGSHIP PROJECT",
       description: "An experimental Android application exploring smartphone motion-sensor signals, crash-candidate detection, location display and alert workflows. Built across React, TypeScript, Capacitor and Android. Not a certified safety system.",
-      focus: "Mobile · Sensors · Applied ML"
+      focus: "Mobile · Sensors · Applied ML",
+      monogram: "AG"
     },
-    "support-ticketing-crm": {
-      title: "SupportTick — Ticketing CRM",
-      label: "BUSINESS APPLICATION",
-      description: "A full-stack support workflow application for creating, searching, filtering and resolving customer tickets, with status tracking, internal notes and an operational dashboard.",
-      focus: "FastAPI · React · SQLite · Docker"
+    "weatherProject": {
+      title: "Weather Forecast",
+      label: "FULL-STACK WEB APPLICATION",
+      description: "A Django-based weather application with city search, current-condition presentation and weather-data visualizations. Demonstrates server-side web development and data presentation.",
+      focus: "Python · Django · Data Visualization",
+      monogram: "WX"
     },
     "aliasgar-ai": {
       title: "Aliasgar AI",
       label: "AI ENGINEERING",
-      description: "A personal engineering agent with FastAPI, Gemini/OpenAI-compatible tool calling, GitHub read tools and approval-gated repository changes.",
-      focus: "LLM tools · FastAPI · GitHub API"
+      description: "A personal engineering agent with FastAPI, LLM tool calling, GitHub read tools and approval-gated repository changes.",
+      focus: "LLM tools · FastAPI · GitHub API",
+      monogram: "AI"
     }
   };
 
@@ -54,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return link;
   }
 
-  function createProjectCard(repo, index) {
+  function createProjectCard(repo) {
     const detail = projectDetails[repo.name];
     const card = document.createElement("article");
     card.className = "project" + (repo.name === "Accident-Guard" ? " featured flagship-project" : "");
@@ -66,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
     visualLabel.textContent = detail.label;
     const monogram = document.createElement("div");
     monogram.className = "github-project-monogram";
-    monogram.textContent = repo.name === "Accident-Guard" ? "AG" : repo.name === "support-ticketing-crm" ? "ST" : "AI";
+    monogram.textContent = detail.monogram;
     const visualFooter = document.createElement("div");
     visualFooter.className = "github-project-visual-footer";
     visualFooter.textContent = detail.focus;
@@ -110,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
       empty.textContent = "Selected project details are temporarily unavailable. Browse the source repositories on GitHub.";
       grid.append(empty);
     } else {
-      selected.forEach((repo, index) => grid.append(createProjectCard(repo, index)));
+      selected.forEach((repo) => grid.append(createProjectCard(repo)));
     }
     setStatus("Showing " + selected.length + " selected projects. The full repository list remains on GitHub.");
   }
