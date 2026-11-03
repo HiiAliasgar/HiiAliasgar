@@ -47,8 +47,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const label = document.createElement("span"); label.textContent = project.title.toUpperCase() + " / " + project.category;
     const live = document.createElement("span"); live.className = "live-indicator"; live.textContent = "● GITHUB PROJECT"; top.append(label,live);
     const preview = document.createElement("div"); preview.className = "dynamic-preview";
-    const glyph = document.createElement("b"); glyph.textContent = project.visual === "accident" ? "AG" : project.visual === "weather" ? "WX" : project.visual === "research" ? "AR" : "AI";
-    preview.append(glyph); visual.append(top,preview);
+    const previews = {
+      accident: '<div class="sensor-ui"><div class="sensor-readout"><small>IMPACT SIGNAL</small><b>0.82 <i>g</i></b><span>DETECTION CANDIDATE</span></div><svg viewBox="0 0 440 140" aria-hidden="true"><path class="wave-grid" d="M0 35H440 M0 70H440 M0 105H440"/><path class="sensor-wave" d="M0 72 L28 72 L43 66 L54 79 L68 72 L88 72 L102 69 L115 76 L128 72 L151 72 L164 15 L176 128 L190 52 L202 78 L217 72 L240 72 L255 69 L268 76 L281 72 L310 72 L325 64 L337 80 L350 72 L375 72 L391 68 L405 76 L440 72"/></svg></div><div class="sensor-bottom"><span>ACCELEROMETER</span><span>GYROSCOPE</span><span>LOCATION STATE</span></div>',
+      agent: '<div class="agent-terminal"><div class="terminal-bar"><i></i><i></i><i></i><span>agent_runtime.py</span></div><div class="terminal-code"><p><b>user</b> <span>› inspect repository</span></p><p><b>agent</b> <span>› planning tool call...</span></p><p class="terminal-active"><b>tool</b> <span>› github.read_files()</span></p><p><b>result</b> <span>› awaiting approval</span></p><div class="terminal-cursor"></div></div></div>',
+      weather: '<div class="weather-ui"><div class="weather-city">NAVI MUMBAI <small>DEMO VIEW</small></div><div class="weather-main"><div class="sun-icon">☼</div><div><b>28°</b><small>PARTLY CLOUDY</small></div></div><div class="weather-bars"><i style="height:32%"></i><i style="height:55%"></i><i style="height:42%"></i><i style="height:82%"></i><i style="height:66%"></i><i style="height:94%"></i><i style="height:48%"></i><i style="height:72%"></i></div></div>',
+      research: '<div class="research-graph"><div class="graph-node node-source">SOURCES</div><div class="graph-node node-agent">AGENT 01</div><div class="graph-node node-agent node-agent-2">AGENT 02</div><div class="graph-node node-core">SYNTHESIS</div><div class="graph-node node-output">CITATIONS</div><svg viewBox="0 0 420 170" aria-hidden="true"><path d="M55 85L150 45L230 85L340 45M55 85L150 125L230 85L340 125"/></svg></div>'
+    };
+    preview.innerHTML = previews[project.visual] || '<div class="generic-project-preview"><span>ENGINEERING PROJECT</span><b>BUILD / TEST / ITERATE</b></div>';
+    visual.append(top,preview);
     const meta = document.createElement("div"); meta.className = "project-meta";
     const category = document.createElement("span"); category.textContent = project.category;
     const focus = document.createElement("span"); focus.textContent = project.meta || "SOFTWARE ENGINEERING"; meta.append(category,focus);
