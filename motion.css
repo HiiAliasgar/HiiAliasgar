@@ -335,3 +335,8 @@ a,button{cursor:pointer}
  .contact-compose{padding:15px!important}
 }
 @media(prefers-reduced-motion:reduce){.project-grid{scroll-behavior:auto}}
+
+/* The contact slide can scroll on shorter desktop screens, keeping every profile link reachable. */
+.contact-slide{align-items:flex-start!important;overflow-y:auto!important}
+.contact-inner{padding-bottom:54px}
+@media(min-width:901px) and (max-height:900px){.contact-inner{padding-top:8px}.contact-main{margin:14px 0 18px}.contact-compose{gap:7px!important}.contact-compose textarea{min-height:72px!important}}
