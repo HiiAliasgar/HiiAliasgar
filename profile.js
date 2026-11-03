@@ -112,11 +112,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const loadProjects = async () => {
     try {
-      const response = await fetch("https://api.github.com/users/HiiAliasgar/repos?type=owner&sort=updated&per_page=100", {
-        headers: {Accept:"application/vnd.github+json"}, cache:"no-store"
-      });
-      if (!response.ok) throw new Error("GitHub API returned " + response.status);
-      const repos = await response.json();
+      const repos = [];
+      for (let page = 1; ; page++) {
+        const response = await fetch("https://api.github.com/users/HiiAliasgar/repos?type=owner&sort=updated&per_page=100&page=" + page, {
+          headers: {Accept:"application/vnd.github+json"}, cache:"no-store"
+        });
+        if (!response.ok) throw new Error("GitHub API returned " + response.status);
+        const batch = await response.json();
+        repos.push(...batch);
+        if (batch.length < 100) break;
+      }
       const publicProjects = repos.filter(repo => !repo.fork && !repo.archived && !repo.private);
       render(publicProjects);
     } catch (error) {
