@@ -195,3 +195,80 @@ a,button{cursor:pointer}
 @keyframes portfolioCardFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 @keyframes portfolioParticle{0%,100%{transform:translate(0,0);opacity:.4}50%{transform:translate(6px,-10px);opacity:1}}
 @media(prefers-reduced-motion:reduce){.developer-art,.window-card-a,.window-card-b,.art-particle{animation:none!important}}
+
+
+/* Requested profile and contact composition */
+.about-profile-layout{
+  display:grid;
+  grid-template-columns:minmax(300px,.78fr) minmax(0,1.42fr);
+  gap:clamp(38px,7vw,112px);
+  align-items:center;
+}
+.about-identity{display:flex;flex-direction:column;align-items:flex-start;min-width:0}
+.about-portrait-orbit{
+  width:clamp(245px,27vw,370px);
+  aspect-ratio:1;
+  position:relative;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  isolation:isolate;
+  margin:0 0 28px 10px;
+  background:radial-gradient(circle at 35% 28%,#f0c987 0,#bc874b 24%,#7750a7 58%,#18263d 100%);
+  box-shadow:0 0 0 1px rgba(255,255,255,.24),0 25px 90px rgba(103,74,147,.22);
+}
+.about-portrait-orbit:before,.about-portrait-orbit:after{
+  content:"";position:absolute;border:1px solid rgba(255,255,255,.26);border-radius:50%;inset:-12px;z-index:-1
+}
+.about-portrait-orbit:after{inset:-25px;border-color:rgba(255,255,255,.1)}
+.about-portrait-halo{position:absolute;inset:10%;border-radius:50%;background:linear-gradient(140deg,rgba(255,255,255,.38),transparent 48%);filter:blur(12px)}
+.about-portrait-orbit img{
+  width:82%;height:82%;object-fit:cover;object-position:center 35%;
+  border-radius:50%;border:5px solid rgba(255,255,255,.82);
+  filter:none;opacity:1;box-shadow:0 14px 45px rgba(0,0,0,.4)
+}
+.about-identity h2{font-size:clamp(43px,5vw,72px);line-height:.94;letter-spacing:-.075em;margin:0;color:#fff}
+.about-identity h2 span{color:#aaa}
+.about-role{font:8px var(--mono);letter-spacing:1.1px;color:#999;margin:16px 0 20px}
+.about-identity .about-social{gap:16px}
+.about-biography{max-width:850px}
+.about-biography h2{font-size:clamp(36px,4.1vw,61px);line-height:1.04;letter-spacing:-.065em;margin:14px 0 19px}
+.about-biography h2 em{font-style:normal;color:#aaa}
+.about-lead{font-size:clamp(14px,1.15vw,17px);line-height:1.8;color:#eee;margin:0 0 14px}
+.about-body{font-size:11px;line-height:1.85;color:#aaa;margin:0 0 11px}
+.about-facts{margin:18px 0 20px}
+.about-facts div{padding:10px 0}
+.about-facts b{font-size:10px;line-height:1.5}
+.project-image-visual{position:relative;overflow:hidden;padding:0!important;background:#080808}
+.project-image-visual .project-app-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;opacity:.92;filter:none}
+.project-image-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.62),transparent 28%,transparent 72%,rgba(0,0,0,.3));pointer-events:none}
+.project-image-visual .visual-top{z-index:5;padding:9px;background:rgba(0,0,0,.52);backdrop-filter:blur(5px)}
+.project-image-visual .sensor-ui,.project-image-visual .agent-terminal,.project-image-visual .research-graph{display:none}
+.contact-invite{padding:22px 0 20px;margin-bottom:3px}
+.contact-invite .overline{margin:0 0 12px}
+.contact-invite h3{font-size:clamp(27px,3vw,40px);line-height:1.04;letter-spacing:-.055em;margin:0 0 12px;color:#f4f4f4}
+.contact-invite h3 em{font-style:normal;color:#aaa}
+.contact-invite>p:last-child{font-size:11px;line-height:1.8;color:#999;max-width:440px;margin:0}
+@media(max-width:1050px){
+ .about-profile-layout{grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr);gap:32px}
+ .about-portrait-orbit{width:min(28vw,290px)}
+ .about-biography h2{font-size:clamp(34px,4vw,48px)}
+}
+@media(max-width:900px){
+ .about-profile-layout{grid-template-columns:1fr;gap:28px}
+ .about-identity{display:grid;grid-template-columns:190px 1fr;column-gap:24px;align-items:end}
+ .about-portrait-orbit{grid-row:span 3;width:180px;margin:0}
+ .about-identity h2{font-size:48px}
+ .about-identity .about-social{grid-column:2}
+ .about-biography{max-width:none}
+}
+@media(max-width:600px){
+ .about-identity{display:flex;align-items:flex-start}
+ .about-portrait-orbit{width:230px;max-width:72vw;margin:4px auto 22px;align-self:center}
+ .about-identity h2{font-size:53px}
+ .about-biography h2{font-size:39px}
+ .about-lead{font-size:14px}
+ .about-body{font-size:11px}
+ .about-facts{grid-template-columns:1fr 1fr}
+ .contact-invite{padding-top:0}
+}
