@@ -506,3 +506,37 @@ a,button{cursor:pointer}
 .project-card-description{font-size:11px}
 }
 @media(prefers-reduced-motion:reduce){.project-card-inner,.art-wave-line{transition:none!important;animation:none!important}}
+
+
+/* Portrait-only fix: preserve the supplied 3:4 photo without oval clipping. */
+.about-portrait-orbit {
+  width: clamp(220px, 24vw, 310px) !important;
+  height: auto !important;
+  aspect-ratio: 3 / 4 !important;
+  display: block !important;
+  overflow: hidden !important;
+  border-radius: 20px !important;
+  background: #101a29 !important;
+  border: 1px solid rgba(164,190,224,.28) !important;
+  box-shadow: 0 16px 45px rgba(0,0,0,.28) !important;
+}
+.about-portrait-orbit img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+@media (max-width: 600px) {
+  .about-portrait-orbit {
+    width: min(72vw, 270px) !important;
+    aspect-ratio: 3 / 4 !important;
+    margin: 0 auto 19px !important;
+    border-radius: 18px !important;
+  }
+}
