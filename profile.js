@@ -174,7 +174,14 @@ document.addEventListener("DOMContentLoaded", () => {
     return link;
   }
   function createProjectCard(repo) {
-    const detail = projectDetails[repo.name];
+    const detail = projectDetails[repo.name] || {
+      title: repo.name.replace(/[-_]/g, " "),
+      label: "GITHUB PROJECT",
+      description: repo.description || "A public software project by Aliasgar Lohawala. Open the repository to review its implementation, documentation and current status.",
+      focus: [repo.language, ...(repo.topics || []).slice(0, 2)].filter(Boolean).join(" · ") || "Software development",
+      monogram: repo.name.split(/[-_\s]+/).map(part => part[0]).join("").slice(0, 2).toUpperCase() || "GH",
+      stack: [...new Set([repo.language, ...(repo.topics || []).slice(0, 4)].filter(Boolean))]
+    };
     const card = document.createElement("article");
     card.className = "project" + (repo.name === "Accident-Guard" ? " featured flagship-project" : "");
     const visual = document.createElement("div");
@@ -207,7 +214,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   function renderRepositories(repositories) {
     const byName = new Map(repositories.map(repo => [repo.name, repo]));
-    const selected = featuredOrder.map(name => byName.get(name)).filter(repo => repo && !repo.fork && !repo.archived);
+    const curated = featuredOrder.map(name => byName.get(name)).filter(repo => repo && !repo.fork && !repo.archived);
+    const curatedNames = new Set(curated.map(repo => repo.name));
+    const additional = repositories
+      .filter(repo => !repo.fork && !repo.archived && !curatedNames.has(repo.name))
+      .sort((a, b) => new Date(b.updated_at || 0) - new Date(a.updated_at || 0));
+    const selected = [...curated, ...additional].slice(0, 6);
     grid.replaceChildren();
     if (!selected.length) {
       const empty = document.createElement("p");
@@ -215,7 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
       empty.textContent = "Selected project details are temporarily unavailable. Browse the source repositories on GitHub.";
       grid.append(empty);
     } else selected.forEach(repo => grid.append(createProjectCard(repo)));
-    setStatus("Showing " + selected.length + " selected projects. The full repository list remains on GitHub.");
+    setStatus("Showing " + selected.length + " projects · synced from public GitHub repositories.");
   }
   function readCache() {
     try {
