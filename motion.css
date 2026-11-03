@@ -135,7 +135,7 @@ a,button{cursor:pointer}
 }
 
 
-/* Portfolio content polish: restrained project identity panels and factual credential entry. */
+/* Portfolio content polish: restrained project identity panels. */
 .github-project-visual{position:relative;display:flex;align-items:stretch;justify-content:stretch;padding:22px;background:#050505}
 .github-project-visual.preview-fallback:after{display:none!important}
 .project-preview-label{width:100%;display:flex;flex-direction:column;justify-content:space-between;gap:14px;padding:15px;border:1px solid #303030;background:linear-gradient(145deg,#111,#050505)}
