@@ -7,29 +7,28 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!grid) return;
 
   const username = "HiiAliasgar";
-  const cacheKey = "aliasgar_public_repositories_v1";
+  const cacheKey = "aliasgar_curated_projects_v2";
   const cacheTtlMs = 10 * 60 * 1000;
-  const featuredOrder = [
-    "Accident-Guard",
-    "aliasgar-ai",
-    "Rag_Application",
-    "smart-study-assistant",
-    "support-ticketing-crm"
-  ];
-  const displayNames = {
-    "Accident-Guard": "AccidentGuard",
-    "aliasgar-ai": "Aliasgar AI",
-    "Rag_Application": "RAG Application",
-    "weatherProject": "Weather Forecast App",
-    "Moive-Recommender-System": "Movie Recommender System",
-    "AI-Image-Classifier-": "AI Image Classifier"
-  };
-  const curatedDescriptions = {
-    "Accident-Guard": "Experimental Android prototype exploring smartphone motion-sensor impact detection. Not a certified safety system.",
-    "aliasgar-ai": "Personal AI agent with Gemini/OpenAI-compatible tool calling, FastAPI and approval-gated GitHub workflows.",
-    "Rag_Application": "Document question-answering prototype using retrieval-augmented generation.",
-    "smart-study-assistant": "AI-assisted study and learning-support project.",
-    "support-ticketing-crm": "Support-ticketing and CRM application."
+  const featuredOrder = ["Accident-Guard", "support-ticketing-crm", "aliasgar-ai"];
+  const projectDetails = {
+    "Accident-Guard": {
+      title: "AccidentGuard",
+      label: "FLAGSHIP PROJECT",
+      description: "An experimental Android application exploring smartphone motion-sensor signals, crash-candidate detection, location display and alert workflows. Built across React, TypeScript, Capacitor and Android. Not a certified safety system.",
+      focus: "Mobile · Sensors · Applied ML"
+    },
+    "support-ticketing-crm": {
+      title: "SupportTick — Ticketing CRM",
+      label: "BUSINESS APPLICATION",
+      description: "A full-stack support workflow application for creating, searching, filtering and resolving customer tickets, with status tracking, internal notes and an operational dashboard.",
+      focus: "FastAPI · React · SQLite · Docker"
+    },
+    "aliasgar-ai": {
+      title: "Aliasgar AI",
+      label: "AI ENGINEERING",
+      description: "A personal engineering agent with FastAPI, Gemini/OpenAI-compatible tool calling, GitHub read tools and approval-gated repository changes.",
+      focus: "LLM tools · FastAPI · GitHub API"
+    }
   };
 
   function setStatus(message) {
@@ -45,13 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function formatDate(value) {
-    if (!value) return "date unavailable";
-    const date = new Date(value);
-    if (Number.isNaN(date.getTime())) return "date unavailable";
-    return new Intl.DateTimeFormat("en-IN", { month: "short", year: "numeric" }).format(date);
-  }
-
   function makeLink(href, label, className) {
     const link = document.createElement("a");
     link.href = href;
@@ -63,52 +55,42 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function createProjectCard(repo, index) {
+    const detail = projectDetails[repo.name];
     const card = document.createElement("article");
-    card.className = "project" + (repo.name === "Accident-Guard" ? " featured" : "");
+    card.className = "project" + (repo.name === "Accident-Guard" ? " featured flagship-project" : "");
 
     const visual = document.createElement("div");
     visual.className = "project-visual github-project-visual";
-
     const visualLabel = document.createElement("span");
     visualLabel.className = "mono";
-    visualLabel.textContent = "GITHUB REPOSITORY / " + String(index + 1).padStart(2, "0");
-
+    visualLabel.textContent = detail.label;
     const monogram = document.createElement("div");
     monogram.className = "github-project-monogram";
-    monogram.textContent = (repo.name || "G").slice(0, 1).toUpperCase();
-
+    monogram.textContent = repo.name === "Accident-Guard" ? "AG" : repo.name === "support-ticketing-crm" ? "ST" : "AI";
     const visualFooter = document.createElement("div");
     visualFooter.className = "github-project-visual-footer";
-    visualFooter.textContent = repo.language || "Open-source project";
-
+    visualFooter.textContent = detail.focus;
     visual.append(visualLabel, monogram, visualFooter);
 
     const info = document.createElement("div");
     info.className = "project-info";
-
     const details = document.createElement("div");
     const title = document.createElement("h3");
-    title.textContent = displayNames[repo.name] || (repo.name || "Untitled repository").replace(/[-_]/g, " ");
+    title.textContent = detail.title;
     const description = document.createElement("p");
-    description.textContent = curatedDescriptions[repo.name] || repo.description || "Public repository. A project description has not been added yet.";
+    description.textContent = detail.description;
     details.append(title, description);
 
     const bottom = document.createElement("div");
     bottom.className = "project-bottom github-project-bottom";
-
     const meta = document.createElement("span");
-    const language = repo.language || "Multiple languages";
-    const stars = Number(repo.stargazers_count || 0);
-    meta.textContent = language + " · Updated " + formatDate(repo.pushed_at || repo.updated_at) + " · ★ " + stars;
-
+    meta.textContent = (repo.language || "Multiple languages") + " · " + Number(repo.stargazers_count || 0) + " stars";
     const links = document.createElement("div");
     links.className = "github-project-links";
     const repositoryUrl = safeUrl(repo.html_url);
-    if (repositoryUrl) links.append(makeLink(repositoryUrl, "Repository ↗", "github-repo-link"));
-
+    if (repositoryUrl) links.append(makeLink(repositoryUrl, "Source code ↗", "github-repo-link"));
     const demoUrl = safeUrl(repo.homepage || "");
-    if (demoUrl) links.append(makeLink(demoUrl, "Live demo ↗", "github-demo-link"));
-
+    if (demoUrl) links.append(makeLink(demoUrl, "Live application ↗", "github-demo-link"));
     bottom.append(meta, links);
     info.append(details, bottom);
     card.append(visual, info);
@@ -116,27 +98,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderRepositories(repositories) {
-    const priority = new Map(featuredOrder.map((name, index) => [name, index]));
-    const visible = repositories
-      .filter((repo) => !repo.fork && !repo.archived && repo.name !== "HiiAliasgar")
-      .sort((a, b) => {
-        const ai = priority.has(a.name) ? priority.get(a.name) : 999;
-        const bi = priority.has(b.name) ? priority.get(b.name) : 999;
-        if (ai !== bi) return ai - bi;
-        return new Date(b.pushed_at || b.updated_at) - new Date(a.pushed_at || a.updated_at);
-      });
+    const byName = new Map(repositories.map((repo) => [repo.name, repo]));
+    const selected = featuredOrder
+      .map((name) => byName.get(name))
+      .filter((repo) => repo && !repo.fork && !repo.archived);
 
     grid.replaceChildren();
-    if (!visible.length) {
+    if (!selected.length) {
       const empty = document.createElement("p");
       empty.className = "github-project-placeholder";
-      empty.textContent = "No public project repositories were found.";
+      empty.textContent = "Selected project details are temporarily unavailable. Browse the source repositories on GitHub.";
       grid.append(empty);
     } else {
-      visible.forEach((repo, index) => grid.append(createProjectCard(repo, index)));
+      selected.forEach((repo, index) => grid.append(createProjectCard(repo, index)));
     }
-    setStatus("Synced " + visible.length + " public repositories from GitHub · refreshed " +
-      new Intl.DateTimeFormat("en-IN", { hour: "2-digit", minute: "2-digit" }).format(new Date()));
+    setStatus("Showing " + selected.length + " selected projects. The full repository list remains on GitHub.");
   }
 
   function readCache() {
@@ -144,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const cached = JSON.parse(localStorage.getItem(cacheKey) || "null");
       if (cached && Array.isArray(cached.repositories)) return cached;
     } catch {
-      // Browser storage may be unavailable; the live request can still work.
+      // Browser storage may be unavailable.
     }
     return null;
   }
@@ -153,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const cached = readCache();
     if (cached && Date.now() - cached.savedAt < cacheTtlMs) {
       renderRepositories(cached.repositories);
-      setStatus("Showing recently synced GitHub repositories · checking for updates…");
+      setStatus("Showing selected projects · checking GitHub for updates…");
     }
 
     try {
@@ -168,20 +144,20 @@ document.addEventListener("DOMContentLoaded", () => {
       try {
         localStorage.setItem(cacheKey, JSON.stringify({ savedAt: Date.now(), repositories }));
       } catch {
-        // The portfolio remains usable if browser storage is disabled.
+        // The portfolio remains usable without browser storage.
       }
       renderRepositories(repositories);
-    } catch (error) {
+    } catch {
       if (cached) {
         renderRepositories(cached.repositories);
-        setStatus("Showing cached GitHub data; live refresh failed. Visit GitHub for the latest projects.");
+        setStatus("Showing cached selected projects; live refresh failed.");
       } else {
         grid.replaceChildren();
         const message = document.createElement("p");
         message.className = "github-project-placeholder";
-        message.textContent = "The live project feed is temporarily unavailable. Use the GitHub link below to browse repositories.";
+        message.textContent = "The selected project feed is temporarily unavailable. Use the source links on GitHub to browse the work.";
         grid.append(message);
-        setStatus("Could not refresh projects from GitHub.");
+        setStatus("Could not refresh selected projects from GitHub.");
       }
     }
   }
