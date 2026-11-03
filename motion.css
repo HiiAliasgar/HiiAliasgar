@@ -342,3 +342,31 @@ a,button{cursor:pointer}
 @media(min-width:901px) and (max-height:900px){.contact-inner{padding-top:8px}.contact-main{margin:14px 0 18px}.contact-compose{gap:7px!important}.contact-compose textarea{min-height:72px!important}}
 
 .weather-card{border-color:#555!important}.weather-card .project-meta span:first-child{color:#ddd}
+
+
+/* Portfolio refinement — clean portrait, reliable project carousel and visible contact links. */
+.about-portrait-orbit { background: transparent !important; box-shadow: none !important; overflow: hidden !important; isolation: auto !important; }
+.about-portrait-orbit::before, .about-portrait-orbit::after, .about-portrait-halo { display: none !important; content: none !important; }
+.about-portrait-orbit img { display: block; width: 100% !important; height: 100% !important; border: 0 !important; border-radius: 50% !important; box-shadow: none !important; object-fit: cover; object-position: center 35%; }
+.project-grid { cursor: grab; user-select: none; -webkit-user-select: none; touch-action: pan-y; scroll-snap-type: x mandatory; scroll-behavior: smooth; }
+.project-grid.is-dragging { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
+.project-grid .project-card { scroll-snap-align: start; }
+.project-slider-controls button { min-width: 40px; min-height: 40px; cursor: pointer; touch-action: manipulation; }
+.project-slider-controls button:disabled { opacity: .32; cursor: not-allowed; }
+.contact-slide { align-items: flex-start !important; overflow-x: hidden !important; overflow-y: auto !important; }
+.contact-slide .contact-inner { width: min(100%, 1180px); max-width: 1180px; margin: 0 auto; padding: 16px 0 58px; }
+.contact-slide .contact-links { display: grid !important; grid-template-columns: repeat(4, minmax(0, 1fr)); width: 100%; visibility: visible !important; opacity: 1 !important; position: relative; z-index: 5; margin: 18px 0 26px !important; }
+.contact-slide .contact-links a { min-width: 0; min-height: 108px; overflow-wrap: anywhere; }
+.contact-slide .contact-links b, .contact-slide .contact-links i { display: block; visibility: visible !important; opacity: 1 !important; }
+.contact-slide .email-link, .contact-slide .contact-direct a { overflow-wrap: anywhere; }
+.desk-scene .pipeline-ok::after { content: " ▍"; display: inline-block; animation: portfolioCursorBlink 1.05s steps(2, start) infinite; }
+.developer-art { transform-origin: 50% 78%; animation: portfolioEngineerFloat 7s ease-in-out infinite !important; }
+.art-particle { animation: portfolioParticle 5.5s ease-in-out infinite !important; }
+.art-particle.p2 { animation-delay: -1.8s !important; }
+.art-particle.p3 { animation-delay: -3.6s !important; }
+@keyframes portfolioCursorBlink { to { opacity: 0; } }
+@keyframes portfolioEngineerFloat { 0%, 100% { transform: translate3d(0,0,0) rotate(0); } 50% { transform: translate3d(0,-5px,0) rotate(.25deg); } }
+@keyframes portfolioParticle { 0%, 100% { transform: translate(0,0); opacity: .42; } 50% { transform: translate(6px,-10px); opacity: 1; } }
+@media (max-width: 900px) { .contact-slide .contact-inner { padding: 10px 0 76px; } .contact-slide .contact-links { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .contact-slide .contact-inner { padding: 4px 0 76px; } .contact-slide .contact-links { grid-template-columns: repeat(2, minmax(0, 1fr)); } .contact-slide .contact-links a { min-height: 100px; padding: 12px 10px; } }
+@media (prefers-reduced-motion: reduce) { .developer-art, .art-particle, .desk-scene .pipeline-ok::after { animation: none !important; } .project-grid { scroll-behavior: auto; } }
