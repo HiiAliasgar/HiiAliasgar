@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!entry.isIntersecting || entry.intersectionRatio < .5) return;
     active = Number(entry.target.dataset.slide);
     railItems.forEach((item, i) => item.classList.toggle("active", i === active));
-    if (slideNumber) slideNumber.textContent = String(active + 1).padStart(2, "0") + " / 05";
+    if (slideNumber) slideNumber.textContent = String(active + 1).padStart(2, "0") + " / 04";
     slides.forEach(slide => slide.classList.toggle("is-active", slide === entry.target));
   }), {threshold: [.5, .7]});
   slides.forEach(slide => observer.observe(slide));
