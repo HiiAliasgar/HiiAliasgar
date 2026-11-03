@@ -193,3 +193,15 @@ a,button{cursor:pointer}
 .compose-heading a{font-size:13px;color:#eee;overflow-wrap:anywhere}
 .contact-compose{gap:10px}
 @media(max-width:600px){.crm-visual,.rag-visual{padding:10px}.crm-stats b{font-size:14px}.rag-ui{gap:8px;padding:8px}}
+
+/* Subtle hero-scene motion: animated illustration, not a distracting loading effect. */
+.developer-art{transform-origin:50% 78%;animation:portfolioEngineerFloat 7s ease-in-out infinite!important}
+.window-card-a{animation:portfolioCardFloat 6s ease-in-out infinite!important}
+.window-card-b{animation:portfolioCardFloat 7s ease-in-out -2s infinite!important}
+.art-particle{animation:portfolioParticle 5.5s ease-in-out infinite!important}
+.art-particle.p2{animation-delay:-1.8s!important}
+.art-particle.p3{animation-delay:-3.6s!important}
+@keyframes portfolioEngineerFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes portfolioCardFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes portfolioParticle{0%,100%{transform:translate(0,0);opacity:.4}50%{transform:translate(6px,-10px);opacity:1}}
+@media(prefers-reduced-motion:reduce){.developer-art,.window-card-a,.window-card-b,.art-particle{animation:none!important}}
