@@ -83,3 +83,63 @@ a,button{cursor:pointer}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 /* Keep the original engineer artwork, but remove decorative movement and cursor gimmicks. */
 .developer-art,.art-glow,.scene-grid,.desk-scene:after,.window-card-a,.window-card-b,.code-float,.art-particle,.sensor-wave,.weather-bars i,.research-graph path,.terminal-cursor{animation:none!important}
+
+
+/* Five-slide editorial layout: dedicated biography, quiet surfaces, no decorative motion. */
+.wordmark{color:#fff}
+.hero-layout,.about-layout{grid-template-columns:minmax(0,1fr) minmax(360px,.9fr)}
+.hero-art-wrap{min-width:0}
+.about-profile-layout{display:grid;grid-template-columns:minmax(280px,.72fr) minmax(0,1.28fr);gap:clamp(34px,7vw,110px);align-items:center}
+.about-photo-panel{position:relative;max-width:470px;aspect-ratio:4/5;border:1px solid #292929;background:#080808;overflow:hidden}
+.about-photo-panel img{display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:.94}
+.about-photo-caption{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:10px;padding:15px;background:linear-gradient(transparent,rgba(0,0,0,.92));font:8px var(--mono);letter-spacing:1px;color:#eee}
+.about-biography{max-width:760px}
+.about-biography h2{font-size:clamp(38px,4.7vw,68px);line-height:1.04;letter-spacing:-.065em;margin:16px 0 22px}
+.about-biography h2 em{font-style:normal;color:#aaa}
+.about-lead{font-size:clamp(15px,1.35vw,19px);line-height:1.75;color:#eee}
+.about-body{font-size:12px;line-height:1.95;color:#999;max-width:700px}
+.about-facts{display:grid;grid-template-columns:1fr 1fr;gap:0 24px;margin:25px 0;border-top:1px solid #292929}
+.about-facts div{padding:13px 0;border-bottom:1px solid #292929}
+.about-facts small,.about-facts b{display:block}
+.about-facts small{font:8px var(--mono);letter-spacing:1px;color:#777;margin-bottom:7px}
+.about-facts b{font-size:11px;font-weight:600;color:#eee}
+.about-social{display:flex;gap:20px;flex-wrap:wrap}
+.about-social a{font:9px var(--mono);letter-spacing:.8px;color:#ddd;border-bottom:1px solid #555;padding-bottom:5px}
+.certificates-slide .certificate-layout{display:block;margin-top:30px}
+.certificate-preview{display:none}
+.certificate-info{max-width:none;display:grid;grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr);column-gap:45px;align-items:start}
+.certificate-info .side-index{grid-column:1/-1;margin-bottom:18px}
+.certificate-info h3{grid-column:1}
+.certificate-info .credential-issuer{grid-column:1}
+.certificate-info>p:not(.credential-issuer):not(.credential-note){grid-column:2;grid-row:2/4;margin-top:4px}
+.certificate-info .credential-facts{grid-column:1}
+.certificate-info .primary-button{grid-column:1;justify-self:start}
+.certificate-info .credential-note{grid-column:2;grid-row:4}
+.contact-main{grid-template-columns:minmax(0,1fr) minmax(340px,.8fr);gap:clamp(40px,8vw,130px);align-items:stretch}
+.contact-message{display:flex;flex-direction:column;justify-content:center}
+.contact-direct{margin-top:34px;padding-top:18px;border-top:1px solid #292929}
+.contact-direct span,.contact-compose label{display:block;font:8px var(--mono);letter-spacing:1.2px;color:#888;margin-bottom:12px}
+.contact-direct a{font-size:14px;color:#eee}
+.contact-compose{display:flex;flex-direction:column;justify-content:center;gap:14px;padding:25px;border:1px solid #292929;background:#070707}
+.contact-compose textarea{width:100%;resize:vertical;min-height:155px;padding:16px;border:1px solid #333;background:#000;color:#eee;font:12px/1.8 var(--sans);outline:none}
+.contact-compose textarea:focus{border-color:#888}
+.contact-compose textarea::placeholder{color:#666}
+.contact-compose .primary-button{align-self:flex-start}
+.contact-compose>p{font-size:9px;color:#777;margin:0}
+@media(max-width:900px){
+ .hero-layout,.about-layout{grid-template-columns:1fr 1fr}
+ .about-profile-layout{grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr);gap:28px}
+ .about-photo-panel{max-width:100%}
+ .contact-main{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+ .hero-layout,.about-layout{display:flex;flex-direction:column}
+ .about-profile-layout{display:flex;flex-direction:column;align-items:stretch;gap:25px}
+ .about-photo-panel{width:100%;max-width:none;aspect-ratio:5/4}
+ .about-biography h2{font-size:42px}
+ .about-facts{grid-template-columns:1fr 1fr}
+ .certificate-info{display:flex;flex-direction:column;gap:10px}
+ .certificate-info .credential-facts{width:100%}
+ .contact-main{display:flex;flex-direction:column;gap:25px}
+ .contact-compose{padding:17px}
+}
