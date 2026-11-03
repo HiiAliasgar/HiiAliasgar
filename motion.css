@@ -162,3 +162,34 @@ a,button{cursor:pointer}
 .credential-link{display:inline-block;margin-top:8px;padding-bottom:7px;border-bottom:1px solid #888;color:#eee;font:9px var(--mono);letter-spacing:.8px}
 .credential-note{max-width:700px;margin-top:22px;color:#777;font-size:10px;line-height:1.8}
 @media(max-width:600px){.credential-entry{grid-template-columns:1fr;gap:24px;padding:24px 0}.github-project-visual{padding:12px}.project-preview-label{padding:12px}}
+
+/* Project-specific interface previews and contact composer fields. */
+.crm-visual,.rag-visual{padding:14px;background:#080808}
+.crm-ui{display:grid;grid-template-columns:38px 1fr;gap:12px;height:calc(100% - 28px);padding:12px;border:1px solid #282828;background:#050505}
+.crm-sidebar{display:flex;flex-direction:column;gap:10px;padding:7px;border-right:1px solid #252525}
+.crm-sidebar i{display:block;width:15px;height:15px;border:1px solid #555;border-radius:3px}
+.crm-content{min-width:0;display:flex;flex-direction:column;gap:14px}
+.crm-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.crm-stats span{padding:9px 7px;border:1px solid #292929}
+.crm-stats small,.crm-stats b{display:block}
+.crm-stats small{font:6px var(--mono);color:#888}
+.crm-stats b{margin-top:7px;font-size:17px;font-weight:500;color:#eee}
+.crm-table{display:grid;gap:7px}
+.crm-table i{height:7px;background:linear-gradient(90deg,#777 0 18%,#292929 18% 100%)}
+.rag-ui{height:calc(100% - 28px);display:grid;grid-template-columns:.8fr 1.2fr;gap:12px;padding:12px;border:1px solid #282828;background:#050505}
+.rag-doc{display:flex;flex-direction:column;justify-content:center;gap:9px;padding:12px;border:1px solid #333}
+.rag-doc span{display:grid;place-items:center;width:30px;height:35px;background:#eee;color:#000;font:9px var(--mono)}
+.rag-doc b{font-size:10px;font-weight:500;color:#eee;overflow-wrap:anywhere}
+.rag-doc small{font:7px var(--mono);color:#888}
+.rag-flow{display:flex;flex-direction:column;align-items:flex-start;justify-content:space-around;font:7px var(--mono);letter-spacing:.6px;color:#ccc}
+.rag-flow i{width:1px;height:8px;background:#777;margin-left:4px}
+.rag-answer{grid-column:1/-1;align-self:end;padding:9px;border:1px solid #303030;color:#999;font-size:8px;line-height:1.6}
+.rag-answer span{display:block;margin-top:5px;color:#ddd;letter-spacing:2px}
+.contact-compose input{width:100%;padding:12px 14px;border:1px solid #333;background:#000;color:#eee;font:12px/1.6 var(--sans);outline:none}
+.contact-compose input:focus{border-color:#888}
+.contact-compose input::placeholder{color:#666}
+.compose-heading{display:flex;flex-direction:column;gap:8px;padding-bottom:15px;margin-bottom:2px;border-bottom:1px solid #292929}
+.compose-heading span{font:8px var(--mono);letter-spacing:1.2px;color:#888}
+.compose-heading a{font-size:13px;color:#eee;overflow-wrap:anywhere}
+.contact-compose{gap:10px}
+@media(max-width:600px){.crm-visual,.rag-visual{padding:10px}.crm-stats b{font-size:14px}.rag-ui{gap:8px;padding:8px}}
