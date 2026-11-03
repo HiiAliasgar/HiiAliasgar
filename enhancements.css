@@ -982,3 +982,57 @@ a:focus-visible, button:focus-visible {
     transition-duration: .01ms !important;
   }
 }
+
+
+/* Portfolio motion layer: restrained, accessible, and CSS-only */
+@keyframes portfolio-rise {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes portfolio-glow {
+  0%, 100% { opacity: .42; transform: scale(.96); }
+  50% { opacity: .82; transform: scale(1.04); }
+}
+.hero > .eyebrow,
+.hero-grid > div,
+.hero-note {
+  animation: portfolio-rise .8s cubic-bezier(.2,.75,.25,1) both;
+}
+.hero-note { animation-delay: .14s; }
+.hero-note .orbit { animation: portfolio-glow 7s ease-in-out infinite; }
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 22rem;
+  height: 22rem;
+  right: -9rem;
+  bottom: -14rem;
+  border-radius: 50%;
+  border: 1px solid rgba(165,180,252,.2);
+  box-shadow: 0 0 0 34px rgba(165,180,252,.035), 0 0 0 68px rgba(165,180,252,.025);
+  pointer-events: none;
+}
+.about-intro,
+.profile-facts,
+.capabilities,
+.social-links {
+  animation: portfolio-rise .7s ease both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 35%;
+}
+.social-links a {
+  transform: translateY(0);
+  transition: transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
+}
+.social-links a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(15,23,42,.12);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero > .eyebrow, .hero-grid > div, .hero-note, .hero-note .orbit,
+  .about-intro, .profile-facts, .capabilities, .social-links {
+    animation: none !important;
+    animation-timeline: auto !important;
+  }
+  .social-links a { transition: none !important; }
+}
