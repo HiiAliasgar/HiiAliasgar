@@ -44,12 +44,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const status = document.getElementById("github-sync-status");
   if (!track) return;
 
-  const featuredOrder = ["Accident-Guard", "aliasgar-ai", "lab_research_lab", "weatherProject"];
+  const featuredOrder = ["Accident-Guard", "aliasgar-ai", "lab_research_lab", "support-ticketing-crm", "Rag_Application", "weatherProject", "AI-Resume-Critiquer"];
   const known = {
     "Accident-Guard": {title:"AccidentGuard", category:"MOBILE SYSTEMS", stack:["React","TypeScript","Capacitor","Android"], description:"Experimental smartphone motion-sensor prototype for crash-candidate detection and a location-aware alert workflow. Not a certified safety system."},
     "aliasgar-ai": {title:"Aliasgar AI Agent", category:"AI AGENT SYSTEMS", stack:["Python","FastAPI","LLM Tool Calling","GitHub API"], description:"LLM-powered engineering agent with structured tool calling, GitHub repository inspection and human-approved changes that produce draft pull requests."},
     "lab_research_lab": {title:"Agent Research Lab", category:"RESEARCH SYSTEMS", stack:["Python","FastAPI","LangGraph","OpenAlex"], description:"Multi-agent research workflow that investigates web and academic sources, then synthesizes cited reports with a review loop."},
-    "weatherProject": {title:"Weather Forecast", category:"FULL-STACK WEB", stack:["Python","Django"], description:"Django weather application for city-based conditions and weather-data presentation."}
+    "weatherProject": {title:"Weather Forecast", category:"FULL-STACK WEB", stack:["Python","Django"], description:"Django weather application for city-based conditions and weather-data presentation."},
+    "support-ticketing-crm": {title:"SupportTick CRM", category:"BACKEND / FULL-STACK", stack:["FastAPI","React","SQLite"], description:"Ticket-management application with search, filtering, status updates, internal notes and a dashboard."},
+    "Rag_Application": {title:"RAG Application", category:"GENERATIVE AI", stack:["Python","ChromaDB","Embeddings","LLM"], description:"Document question-answering workflow with PDF ingestion, chunking, vector retrieval and source-grounded responses."},
+    "AI-Resume-Critiquer": {title:"AI Resume Critiquer", category:"GENERATIVE AI", stack:["Python","Streamlit","Groq API"], description:"Resume feedback application that reviews PDF or text resumes against a target role."}
   };
 
   const makeCard = repo => {
@@ -60,10 +63,17 @@ document.addEventListener("DOMContentLoaded", () => {
     visual.className = "project-visual github-project-visual";
     const image = document.createElement("img");
     image.loading = "lazy";
-    image.alt = "GitHub preview for " + (details.title || repo.name);
-    image.src = "https://opengraph.githubassets.com/1/HiiAliasgar/" + encodeURIComponent(repo.name);
-    image.onerror = () => { image.remove(); visual.classList.add("preview-fallback"); };
-    visual.append(image);
+    visual.classList.add("preview-fallback");
+    const preview = document.createElement("div");
+    preview.className = "project-preview-label";
+    const previewKicker = document.createElement("span");
+    previewKicker.textContent = details.category || "ENGINEERING PROJECT";
+    const previewName = document.createElement("strong");
+    previewName.textContent = details.title || repo.name.replace(/[-_]/g, " ");
+    const previewStack = document.createElement("small");
+    previewStack.textContent = (details.stack || [repo.language].filter(Boolean)).slice(0, 3).join("  /  ");
+    preview.append(previewKicker, previewName, previewStack);
+    visual.append(preview);
 
     const meta = document.createElement("div");
     meta.className = "project-meta";
@@ -118,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const footer = document.querySelector(".projects-footer");
     footer?.append(controls);
     updateCounter();
-    if (status) status.textContent = "ALL PUBLIC REPOSITORIES · LIVE FROM GITHUB";
+    if (status) status.textContent = "7 CURATED PROJECTS · LIVE FROM GITHUB";
   };
 
   const loadProjects = async () => {
@@ -133,7 +143,8 @@ document.addEventListener("DOMContentLoaded", () => {
         repos.push(...batch);
         if (batch.length < 100) break;
       }
-      const publicProjects = repos.filter(repo => !repo.fork && !repo.archived && !repo.private);
+      const curated = new Set(featuredOrder);
+      const publicProjects = repos.filter(repo => curated.has(repo.name) && !repo.fork && !repo.archived && !repo.private);
       render(publicProjects);
     } catch (error) {
       if (status) status.textContent = "GITHUB COULD NOT BE REACHED · CHECK BACK LATER";
