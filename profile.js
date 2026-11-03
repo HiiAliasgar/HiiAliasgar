@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const message = document.getElementById("contact-message-input")?.value.trim();
     if (!message) return;
     const subject = encodeURIComponent("Portfolio enquiry / collaboration");
-    const body = encodeURIComponent(message + "\\n\\n— Sent from Aliasgar Lohawala's portfolio");
+    const body = encodeURIComponent(message + "\n\n— Sent from Aliasgar Lohawala's portfolio");
     window.location.href = "mailto:aliasgarlohawal52@gmail.com?subject=" + subject + "&body=" + body;
   });
 
