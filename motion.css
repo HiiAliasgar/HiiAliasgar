@@ -288,7 +288,7 @@ a,button{cursor:pointer}
 .about-portrait-orbit{box-shadow:none!important;background:radial-gradient(circle at 35% 28%,#e7bd83 0,#b27a4c 34%,#66518d 72%,#18263d 100%)!important;overflow:hidden}
 .about-portrait-orbit:before,.about-portrait-orbit:after{display:none!important;content:none!important}
 .about-portrait-halo{display:none!important}
-.about-portrait-orbit img{width:100%;height:100%;border:0!important;border-radius:50%;box-shadow:none!important;object-fit:cover;object-position:center 35%}
+.about-portrait-orbit img{width:86%;height:86%;border:0!important;border-radius:50%;box-shadow:none!important;object-fit:cover;object-position:center 35%}
 .project-grid{display:flex!important;gap:16px!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:5px 2px 18px;overscroll-behavior-x:contain}
 .project-grid::-webkit-scrollbar{display:none}
 .project-card{flex:0 0 clamp(280px,31vw,370px)!important;min-width:0;scroll-snap-align:start}
