@@ -5,10 +5,10 @@
 </p>
 
 <p align="center">
-  <a href="https://hiialiasgar.github.io/HiiAliasgar/"><img src="https://img.shields.io/badge/Portfolio-Explore-4F46E5?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio" /></a>
-  <a href="https://linkedin.com/in/aliasgar-lohawala"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
-  <a href="https://www.kaggle.com/aliasgarlohawala"><img src="https://img.shields.io/badge/Kaggle-Profile-20BEFF?style=for-the-badge&logo=kaggle&logoColor=white" alt="Kaggle" /></a>
-  <a href="https://github.com/HiiAliasgar"><img src="https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
+  <a href="https://hiialiasgar.github.io/HiiAliasgar/"><img src="https://img.shields.io/badge/Portfolio-Explore-4F46E5?style=for-the-badge&logo=googlechrome&logoColor=white" width="190" height="42" alt="Portfolio" /></a>
+  <a href="https://linkedin.com/in/aliasgar-lohawala"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" width="190" height="42" alt="LinkedIn" /></a>
+  <a href="https://www.kaggle.com/aliasgarlohawala"><img src="https://img.shields.io/badge/Kaggle-Profile-20BEFF?style=for-the-badge&logo=kaggle&logoColor=white" width="190" height="42" alt="Kaggle" /></a>
+  <a href="https://github.com/HiiAliasgar"><img src="https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white" width="190" height="42" alt="GitHub" /></a>
 </p>
 
 <p align="center">B.Tech CSE — Artificial Intelligence & Machine Learning · Navi Mumbai, India</p>
@@ -39,7 +39,7 @@ An Android-focused prototype exploring whether smartphone motion sensors can hel
 
 | Project | Engineering focus |
 |---|---|
-| [SupportTick — Ticketing CRM](https://github.com/HiiAliasgar/support-ticketing-crm) | Full-stack ticket workflows, search/filtering, status updates, internal notes, dashboard, FastAPI and React. |
+| [Weather Forecast](https://github.com/HiiAliasgar/weatherProject) | Django web application with city search, current weather presentation and data visualizations. |
 | [Aliasgar AI](https://github.com/HiiAliasgar/aliasgar-ai) | Personal engineering agent with LLM tool calling, GitHub read tools and approval-gated file changes. |
 | [Agent Research Lab](https://github.com/HiiAliasgar/lab_research_lab) | Multi-agent research workflow combining web and academic sources with citation tracking. |
 
@@ -63,10 +63,10 @@ I keep the public portfolio curated rather than listing every experiment. Other 
 ## Connect
 
 <p>
-  <a href="https://hiialiasgar.github.io/HiiAliasgar/"><img src="https://img.shields.io/badge/Portfolio-Visit-4F46E5?style=flat-square" alt="Portfolio" /></a>
-  <a href="https://linkedin.com/in/aliasgar-lohawala"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
-  <a href="https://www.kaggle.com/aliasgarlohawala"><img src="https://img.shields.io/badge/Kaggle-Explore-20BEFF?style=flat-square&logo=kaggle&logoColor=white" alt="Kaggle" /></a>
-  <a href="mailto:aliasgarlohawal52@gmail.com"><img src="https://img.shields.io/badge/Email-Contact-D14836?style=flat-square&logo=gmail&logoColor=white" alt="Email" /></a>
+  <a href="https://hiialiasgar.github.io/HiiAliasgar/"><img src="https://img.shields.io/badge/Portfolio-Visit-4F46E5?style=flat-square" width="150" height="34" alt="Portfolio" /></a>
+  <a href="https://linkedin.com/in/aliasgar-lohawala"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin&logoColor=white" width="150" height="34" alt="LinkedIn" /></a>
+  <a href="https://www.kaggle.com/aliasgarlohawala"><img src="https://img.shields.io/badge/Kaggle-Explore-20BEFF?style=flat-square&logo=kaggle&logoColor=white" width="150" height="34" alt="Kaggle" /></a>
+  <a href="mailto:aliasgarlohawal52@gmail.com"><img src="https://img.shields.io/badge/Email-Contact-D14836?style=flat-square&logo=gmail&logoColor=white" width="150" height="34" alt="Email" /></a>
 </p>
 
 <p align="center"><sub>Build deliberately. Test honestly. Document clearly.</sub></p>
