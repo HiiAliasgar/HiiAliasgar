@@ -70,3 +70,8 @@ I keep the public portfolio curated rather than listing every experiment. Other 
 </p>
 
 <p align="center"><sub>Build deliberately. Test honestly. Document clearly.</sub></p>
+
+
+## Validation
+
+Run the static portfolio smoke checks with `python -m unittest discover -s tests -v`. The checks verify the About and featured-project sections, unique HTML IDs and GitHub project links.
