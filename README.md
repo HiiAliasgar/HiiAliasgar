@@ -39,9 +39,9 @@ An Android-focused prototype exploring whether smartphone motion sensors can hel
 
 | Project | Engineering focus |
 |---|---|
-| [Weather Forecast](https://github.com/HiiAliasgar/weatherProject) | Django web application with city search, current weather presentation and data visualizations. |
-| [Aliasgar AI](https://github.com/HiiAliasgar/aliasgar-ai) | Personal engineering agent with LLM tool calling, GitHub read tools and approval-gated file changes. |
+| [SupportTick CRM](https://github.com/HiiAliasgar/support-ticketing-crm) | Full-stack support workflow with ticket management, role-based operations and a FastAPI backend. |
 | [Agent Research Lab](https://github.com/HiiAliasgar/lab_research_lab) | Multi-agent research workflow combining web and academic sources with citation tracking. |
+| [AI Resume Critiquer](https://github.com/HiiAliasgar/AI-Resume-Critiquer) | Resume-feedback application with PDF/TXT input and structured, role-aware suggestions. |
 
 I keep the public portfolio curated rather than listing every experiment. Other repositories remain available in the [repository archive](https://github.com/HiiAliasgar?tab=repositories).
 
